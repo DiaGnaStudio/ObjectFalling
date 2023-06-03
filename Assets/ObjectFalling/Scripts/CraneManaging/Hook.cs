@@ -26,15 +26,10 @@ namespace DiaGna.ObjectFalling.CraneManaging
             OnDrop?.Invoke();
         }
 
-        public void AssignObject(GameObject target)
+        public void AssignObject(Rigidbody target)
         {
-            if (!target.TryGetComponent(out Rigidbody targetRigidbody))
-            {
-                targetRigidbody = target.AddComponent<Rigidbody>();
-            }
-
             target.transform.position = objectPosition;
-            m_Joint.connectedBody = targetRigidbody;
+            m_Joint.connectedBody = target;
         }
 
         private void Update()

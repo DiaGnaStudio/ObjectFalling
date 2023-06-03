@@ -10,6 +10,7 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
     public class SimpleBrickCreator : MonoBehaviour
     {
         [SerializeField, Min(0)] private float m_Delay = 1;
+        [SerializeField] private GameObject cubePrefab;
 
         private void OnEnable()
         {
@@ -19,6 +20,12 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
         private void OnDisable()
         {
             Crane.Instance.Component.Hook.OnDrop -= OnDrop;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+                OnDrop();
         }
 
         [ContextMenu("Creating")]
@@ -32,19 +39,20 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
             yield return new WaitForSeconds(m_Delay);
 
             var brick = Creating();
-            Crane.Instance.Component.Hook.AssignObject(brick.gameObject);
+            Crane.Instance.Component.Hook.AssignObject(brick.Rigidbody);
         }
 
         private Brick Creating()
         {
-            var obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            //var obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            var obj = Instantiate(cubePrefab);
 
             var objectRenderer = obj.GetComponent<Renderer>();
             Material material = new Material(objectRenderer.sharedMaterial);
             material.color = Random.ColorHSV();
             objectRenderer.sharedMaterial = material;
 
-            return obj.AddComponent<Brick>();
+            return obj.GetComponent<Brick>();
         }
     }
 }

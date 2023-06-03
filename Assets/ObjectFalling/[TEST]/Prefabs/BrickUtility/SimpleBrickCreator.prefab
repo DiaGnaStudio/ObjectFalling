@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delay: 1
+  cubePrefab: {fileID: 253116285291935745, guid: 66a14c744ee622b47828527fbf6810f5, type: 3}
