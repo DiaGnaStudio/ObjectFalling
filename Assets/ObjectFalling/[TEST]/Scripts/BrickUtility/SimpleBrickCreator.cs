@@ -1,4 +1,5 @@
 using DiaGna.ObjectFalling.CraneManaging;
+using DiaGna.ObjectFalling.Gameplay;
 using System.Collections;
 using UnityEngine;
 
@@ -13,16 +14,23 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
 
         private void OnEnable()
         {
-            Crane.Instance.Component.Hook.OnDrop += OnDrop;
+            FinishLine.OnReached += CheckCrating;
         }
 
         private void OnDisable()
         {
-            Crane.Instance.Component.Hook.OnDrop -= OnDrop;
+            FinishLine.OnReached -= CheckCrating;
+        }
+
+        private void CheckCrating(bool isWin)
+        {
+            if (isWin) return;
+
+            Creating();
         }
 
         [ContextMenu("Creating")]
-        private void OnDrop()
+        private void Creating()
         {
             StartCoroutine(WaitToCreate());
         }
@@ -31,11 +39,11 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
         {
             yield return new WaitForSeconds(m_Delay);
 
-            var brick = Creating();
-            Crane.Instance.Component.Hook.AssignObject(brick.gameObject);
+            Brick brick = GetBrick();
+            Crane.Instance.Component.Hook.AssignObject(brick);
         }
 
-        private Brick Creating()
+        private Brick GetBrick()
         {
             var obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
