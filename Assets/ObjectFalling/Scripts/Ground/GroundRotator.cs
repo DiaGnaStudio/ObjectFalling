@@ -1,24 +1,46 @@
+using DiaGna.ObjectFalling.BrickUtility;
+using DiaGna.ObjectFalling.CraneManaging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DiaGna.ObjectFalling.BrickUtility;
 
 namespace DiaGna.ObjectFalling.GroundUtility
 {
+    /// <summary>
+    /// A ground component to rotates the ground after each brick droped.
+    /// </summary>
     public class GroundRotator : MonoBehaviour
     {
         [SerializeField] private float m_rotationAmount = 90.0f;
         [SerializeField] private float m_roteteDuration;
-        private bool isRotating;
 
-        [SerializeField] private List<Brick> brickList = new List<Brick>();
+        private readonly List<Brick> m_BrickList = new List<Brick>();
 
-        public event Action<Brick> OnEndRotation;
+        /// <summary>
+        /// Invokes when the ground rotation finished.
+        /// </summary>
+        public event Action<Brick> OnRotated;
 
-
-        public void ConnectFallingObject(Brick brick)
+        private void OnEnable()
         {
+            Crane.Instance.Component.Hook.OnDrop += OnDropBrick;
+        }
+
+        private void OnDisable()
+        {
+            Crane.Instance.Component.Hook.OnDrop -= OnDropBrick;
+        }
+
+        private void OnDropBrick(Brick brick)
+        {
+            brick.OnGrounded += ConnectFallingObject;
+        }
+
+        private void ConnectFallingObject(Brick brick)
+        {
+            brick.OnGrounded -= ConnectFallingObject;
+
             AddBrick(brick);
 
             RotateGround();
@@ -26,11 +48,12 @@ namespace DiaGna.ObjectFalling.GroundUtility
 
         private void AddBrick(Brick brick)
         {
-            if (!brickList.Contains(brick))
-                brickList.Add(brick);
-
-            brick.SetBrickParent(transform);
+            if (!m_BrickList.Contains(brick))
+            {
+                m_BrickList.Add(brick);
+            }
         }
+
         private void RotateGround()
         {
             StartCoroutine(RotateCube());
@@ -38,8 +61,6 @@ namespace DiaGna.ObjectFalling.GroundUtility
 
         IEnumerator RotateCube()
         {
-            isRotating = true;
-
             float rotationPerFrame = m_rotationAmount / (m_roteteDuration / Time.deltaTime);
 
             float rotatedAmount = 0f;
@@ -50,16 +71,13 @@ namespace DiaGna.ObjectFalling.GroundUtility
                 yield return null;
             }
 
-            isRotating = false;
-            
             EndRotation();
         }
 
-
         private void EndRotation()
         {
-            var brick = brickList[brickList.Count - 1];
-            OnEndRotation?.Invoke(brick);
+            var brick = m_BrickList[m_BrickList.Count - 1];
+            OnRotated?.Invoke(brick);
         }
     }
 }

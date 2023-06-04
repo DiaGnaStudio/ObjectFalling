@@ -1,20 +1,29 @@
 ﻿using DiaGna.ObjectFalling.CraneManaging;
 using System;
 using UnityEngine;
-using DiaGna.ObjectFalling.GroundUtility;
 
 namespace DiaGna.ObjectFalling.BrickUtility
 {
+    /// <summary>
+    /// A class to provides a brick
+    /// </summary>
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Collider))]
     public class Brick : MonoBehaviour
     {
-        [SerializeField, Min(0)] private float m_Hight;
-
-        public float Hight => m_Hight;
+        private bool m_OnGrounded;
 
         private Rigidbody m_rigidbody;
+
+        /// <summary>
+        /// Reference of brick's rigidbody.
+        /// </summary>
         public Rigidbody Rigidbody => m_rigidbody;
 
-        private bool isGrounded;
+        /// <summary>
+        /// Invokes when this brick collided with other object.
+        /// </summary>
+        public event Action<Brick> OnGrounded;
 
         private void Awake()
         {
@@ -31,7 +40,8 @@ namespace DiaGna.ObjectFalling.BrickUtility
         {
             Crane.Instance.Component.Hook.OnDrop -= OnDrop;
         }
-        private void OnDrop()
+
+        private void OnDrop(Brick brick)
         {
             SetAngularDrag(0.05f);
         }
@@ -41,29 +51,18 @@ namespace DiaGna.ObjectFalling.BrickUtility
             m_rigidbody.angularDrag = dragValue;
         }
 
-        private void OnCollidedToGround()
-        {
-            isGrounded = true;
-            Ground.Instance.GroundRotator.ConnectFallingObject(this);
-        }
-
-        public void SetBrickParent(Transform parentTransform)
-        {
-            transform.parent = parentTransform;
-        }
-
         public float GetBrickHight()
         {
             var worldPosition = transform.TransformPoint(Vector3.zero);
-            m_Hight = worldPosition.y;
-
-            return m_Hight;
+            return worldPosition.y;
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            if(!isGrounded)
-                OnCollidedToGround();
+            if (m_OnGrounded) return;
+            m_OnGrounded = true;
+            transform.SetParent(collision.transform.root);
+            OnGrounded?.Invoke(this);
         }
     }
 }

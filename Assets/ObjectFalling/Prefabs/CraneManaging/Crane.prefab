@@ -15,7 +15,7 @@ GameObject:
   m_Layer: 0
   m_Name: Crane
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -96,7 +96,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4801985994232648168, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4801985994232648168, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_AngularYLimit.limit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4801985994232648171, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 4801985994232648171, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
       propertyPath: m_Name
       value: Hook

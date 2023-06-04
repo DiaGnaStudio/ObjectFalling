@@ -1,4 +1,5 @@
 using DiaGna.ObjectFalling.CraneManaging;
+using DiaGna.ObjectFalling.Gameplay;
 using System.Collections;
 using UnityEngine;
 
@@ -10,26 +11,26 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
     public class SimpleBrickCreator : MonoBehaviour
     {
         [SerializeField, Min(0)] private float m_Delay = 1;
-        [SerializeField] private GameObject cubePrefab;
 
         private void OnEnable()
         {
-            Crane.Instance.Component.Hook.OnDrop += OnDrop;
+            FinishLine.OnReached += CheckCrating;
         }
 
         private void OnDisable()
         {
-            Crane.Instance.Component.Hook.OnDrop -= OnDrop;
+            FinishLine.OnReached -= CheckCrating;
         }
 
-        private void Update()
+        private void CheckCrating(bool isWin)
         {
-            if (Input.GetKeyDown(KeyCode.C))
-                OnDrop();
+            if (isWin) return;
+
+            Creating();
         }
 
         [ContextMenu("Creating")]
-        private void OnDrop()
+        private void Creating()
         {
             StartCoroutine(WaitToCreate());
         }
@@ -38,21 +39,20 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
         {
             yield return new WaitForSeconds(m_Delay);
 
-            var brick = Creating();
-            Crane.Instance.Component.Hook.AssignObject(brick.Rigidbody);
+            Brick brick = GetBrick();
+            Crane.Instance.Component.Hook.AssignObject(brick);
         }
 
-        private Brick Creating()
+        private Brick GetBrick()
         {
-            //var obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            var obj = Instantiate(cubePrefab);
+            var obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
             var objectRenderer = obj.GetComponent<Renderer>();
             Material material = new Material(objectRenderer.sharedMaterial);
             material.color = Random.ColorHSV();
             objectRenderer.sharedMaterial = material;
 
-            return obj.GetComponent<Brick>();
+            return obj.AddComponent<Brick>();
         }
     }
 }
