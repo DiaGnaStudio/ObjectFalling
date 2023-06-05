@@ -1,7 +1,9 @@
 {
     "name": "DiaGna.ObjectFalling",
     "rootNamespace": "DiaGna.ObjectFalling",
-    "references": [],
+    "references": [
+        "GUID:7a9351d34e995a14f9eeb4edaa7f7811"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
