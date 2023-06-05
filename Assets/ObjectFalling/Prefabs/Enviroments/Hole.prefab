@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af67fa4c620e034ea98aabc674250b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DontDestroyOnLoad: 0
   m_groundRotator: {fileID: 5708167948708158854}
 --- !u!114 &5708167948708158854
 MonoBehaviour:
@@ -350,7 +351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rotationAmount: 90
   m_roteteDuration: 1
-  brickList: []
 --- !u!1 &5076449849403367884
 GameObject:
   m_ObjectHideFlags: 0

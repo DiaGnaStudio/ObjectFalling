@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee852221ca43134408e14e7535a685d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DontDestroyOnLoad: 0
   m_Component: {fileID: 607196113024744125}
 --- !u!114 &607196113024744125
 MonoBehaviour:
@@ -136,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4801985994232648169, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4801985994232648169, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
       propertyPath: m_ConnectedMassScale

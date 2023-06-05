@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.dgs.framework": {
-      "version": "file:com.ugs.packagetemplate",
+      "version": "file:com.dgs.framework",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
