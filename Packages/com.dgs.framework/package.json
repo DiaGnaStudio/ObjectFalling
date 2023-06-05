@@ -1,0 +1,18 @@
+{
+  "name": "com.dgs.framework",
+  "version": "0.1.0",
+  "displayName": "DGS Framework",
+"description": "DiaGna framework which contains most common unbound packages and required scripts for most of projects.",
+  "unity": "2020.2",
+  "unityRelease": "0f1",
+  "keywords": [
+    "dgs"
+  ],
+  "author": {
+    "name": "DiaGna Game Studio",
+    "email": "",
+    "url": ""
+  },
+  "dependencies": {
+  }
+}

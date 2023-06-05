@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.dgs.framework": {
+      "version": "file:com.dgs.framework",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.collab-proxy": {
       "version": "1.5.7",
       "depth": 0,
