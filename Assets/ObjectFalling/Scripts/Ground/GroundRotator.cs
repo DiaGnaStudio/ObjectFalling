@@ -37,12 +37,12 @@ namespace DiaGna.ObjectFalling.GroundUtility
 
         private void OnDropBrick(Brick brick)
         {
-            brick.OnGrounded += ConnectFallingObject;
+            brick.OnCollision += ConnectFallingObject;
         }
 
-        private void ConnectFallingObject(Brick brick)
+        private void ConnectFallingObject(Brick brick, Collision collision)
         {
-            brick.OnGrounded -= ConnectFallingObject;
+            brick.OnCollision -= ConnectFallingObject;
 
             AddBrick(brick);
 
