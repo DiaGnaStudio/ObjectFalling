@@ -23,7 +23,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
         /// <summary>
         /// Invokes when this brick collided with other object.
         /// </summary>
-        public event Action<Brick> OnGrounded;
+        public event Action<Brick, Collision> OnCollision;
 
         private void Awake()
         {
@@ -62,7 +62,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
             if (m_OnGrounded) return;
             m_OnGrounded = true;
             transform.SetParent(collision.transform.root);
-            OnGrounded?.Invoke(this);
+            OnCollision?.Invoke(this, collision);
         }
     }
 }

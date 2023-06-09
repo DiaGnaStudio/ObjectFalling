@@ -2,7 +2,8 @@
     "name": "DiaGna.ObjectFalling.Test",
     "rootNamespace": "DiaGna.ObjectFalling",
     "references": [
-        "DiaGna.ObjectFalling"
+        "DiaGna.ObjectFalling",
+        "DiaGna.Freamwork"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

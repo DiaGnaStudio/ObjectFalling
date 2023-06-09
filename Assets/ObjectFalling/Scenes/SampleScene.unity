@@ -363,6 +363,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4333744927520619577, guid: 0c4137f7edc9af44886dcdae814c01e3, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4333744927847473717, guid: 0c4137f7edc9af44886dcdae814c01e3, type: 3}
       propertyPath: m_Name
       value: Crane

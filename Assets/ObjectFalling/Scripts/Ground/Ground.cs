@@ -1,3 +1,4 @@
+using DiaGna.Framework.Singletons;
 using DiaGna.ObjectFalling.BrickUtility;
 using System;
 using UnityEngine;
@@ -7,10 +8,9 @@ namespace DiaGna.ObjectFalling.GroundUtility
     /// <summary>
     /// A Ground class to provides ground's components.
     /// </summary>
-    public class Ground : MonoBehaviour
+    public class Ground : ComponentSingleton<Ground>
     {
-        public static Ground Instance { get; private set; }
-
+        [Header("Components")]
         [SerializeField] private GroundRotator m_groundRotator;
 
         /// <summary>
@@ -20,14 +20,6 @@ namespace DiaGna.ObjectFalling.GroundUtility
         {
             add => m_groundRotator.OnRotated += value;
             remove => m_groundRotator.OnRotated -= value;
-        }
-
-        private void Awake()
-        {
-            if (!Instance)
-                Instance = this;
-            else
-                Destroy(gameObject);
         }
     }
 }

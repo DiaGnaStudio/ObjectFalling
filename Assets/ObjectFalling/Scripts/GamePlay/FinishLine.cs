@@ -31,7 +31,10 @@ namespace DiaGna.ObjectFalling.Gameplay
         }
         private void OnDisable()
         {
-            Ground.Instance.OnRotated -= CheckBricksHeight;
+            if (Ground.IsAlive)
+            {
+                Ground.Instance.OnRotated -= CheckBricksHeight;
+            }
         }
 
         private void CheckBricksHeight(Brick brick)
@@ -45,10 +48,10 @@ namespace DiaGna.ObjectFalling.Gameplay
 
         private void OnDrawGizmos()
         {
+#if UNITY_EDITOR
             Gizmos.color = Color.green;
             var hightPosition = transform.position + Vector3.up * m_WinHight;
             Gizmos.DrawLine(transform.position, hightPosition);
-#if UNITY_EDITOR
             UnityEditor.Handles.color = Color.green;
             UnityEditor.Handles.DrawWireDisc(hightPosition, Vector3.up, 5);
 #endif
