@@ -38,7 +38,10 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private void OnDisable()
         {
-            Crane.Instance.Component.Hook.OnDrop -= OnDrop;
+            if (Crane.IsAlive)
+            {
+                Crane.Instance.Component.Hook.OnDrop -= OnDrop;
+            }
         }
 
         private void OnDrop(Brick brick)
