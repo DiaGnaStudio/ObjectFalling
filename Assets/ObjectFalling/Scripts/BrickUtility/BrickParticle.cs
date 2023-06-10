@@ -11,14 +11,14 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private void OnEnable()
         {
-            brick.OnGrounded += PlayParticle;
+            brick.OnCollision += PlayParticle;
         }
         private void OnDisable()
         {
-            brick.OnGrounded -= PlayParticle;
+            brick.OnCollision -= PlayParticle;
         }
 
-        private void PlayParticle(Brick brick)
+        private void PlayParticle(Brick brick, Collision collision)
         {
             var particle = InstantiateParticle();
             particle.Play();
