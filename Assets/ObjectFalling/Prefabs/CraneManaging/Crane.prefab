@@ -80,6 +80,7 @@ MonoBehaviour:
   m_VerticalLimit:
     m_Min: 0
     m_Max: 0
+  joystickDeadzone: 0.2
 --- !u!1001 &9115455920626150864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4801985994232648169, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4801985994232648169, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
       propertyPath: m_ConnectedMassScale

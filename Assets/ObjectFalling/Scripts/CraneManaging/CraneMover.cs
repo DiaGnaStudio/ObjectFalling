@@ -1,3 +1,4 @@
+using DiaGna.ObjectFalling.UserInterface.Tools;
 using System;
 using UnityEngine;
 
@@ -28,10 +29,24 @@ namespace DiaGna.ObjectFalling.CraneManaging
             m_PremitiveHight = transform.position.y;
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            float horizontal = Input.GetAxis("Horizontal") * m_Speed * Time.deltaTime;
-            float vertical = Input.GetAxis("Vertical") * m_Speed * Time.deltaTime;
+            MoverEvent.OnDrag += MoveHook;
+            MoverJoystick.OnDrag += MoveHook;
+        }
+
+        private void OnDisable()
+        {
+            MoverEvent.OnDrag -= MoveHook;
+            MoverJoystick.OnDrag -= MoveHook;
+        }
+
+        private void MoveHook(Vector2 vector)
+        {
+            Debug.Log(vector);
+
+            float horizontal = vector.x * m_Speed * Time.deltaTime;
+            float vertical = vector.y * m_Speed * Time.deltaTime;
 
             var currentPostion = transform.position;
             transform.position = new Vector3(m_HorizontalLimit.GetValue(currentPostion.x + horizontal), m_PremitiveHight, m_VerticalLimit.GetValue(currentPostion.z + vertical));

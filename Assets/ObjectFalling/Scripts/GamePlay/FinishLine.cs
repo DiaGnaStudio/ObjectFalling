@@ -59,13 +59,11 @@ namespace DiaGna.ObjectFalling.Gameplay
 
         private void CreateFinishLine()
         {
-            var line = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            line.transform.SetParent(transform);
-            line.transform.localPosition = new Vector3(3, m_WinHight/2, 0);
-            line.transform.localRotation = Quaternion.Euler(0, 45, 0);
-            line.transform.localScale = new Vector3(0.5f,m_WinHight,0.5f);
-
-            line.GetComponent<Renderer>().material = m_LineMaterial;
+            var line = transform.GetChild(0);
+            line.SetParent(transform);
+            line.localPosition = new Vector3(3, m_WinHight / 2, 0);
+            line.localRotation = Quaternion.Euler(0, 45, 0);
+            line.localScale = new Vector3(0.5f, m_WinHight, 0.5f);
         }
     }
 }
