@@ -9,6 +9,7 @@ namespace DiaGna.ObjectFalling.Gameplay
     {
         [SerializeField] private float m_WinHight;
         private float m_CurrentHight;
+        private float m_LastHight;
 
         [Header("Line")]
         [SerializeField] private Material m_LineMaterial;
@@ -19,6 +20,7 @@ namespace DiaGna.ObjectFalling.Gameplay
         /// <b>Parameters:</b> returns true if the bricks hight reached to the win hight.
         /// </summary>
         public static event Action<bool> OnReached;
+        public static event Action<float> OnChangeHeight;
 
         private void Awake()
         {
@@ -40,6 +42,14 @@ namespace DiaGna.ObjectFalling.Gameplay
         private void CheckBricksHeight(Brick brick)
         {
             m_CurrentHight = brick.GetBrickHight();
+
+            Debug.Log("H = " + m_CurrentHight);
+            //bool increaseHeight = m_CurrentHight > m_LastHight;
+            //if(increaseHeight)
+            //{
+            //    m_LastHight = m_CurrentHight;
+            //}
+            OnChangeHeight?.Invoke(m_CurrentHight);
 
             bool isReached = m_CurrentHight >= m_WinHight;
 
