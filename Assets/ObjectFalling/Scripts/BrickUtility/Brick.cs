@@ -11,6 +11,8 @@ namespace DiaGna.ObjectFalling.BrickUtility
     [RequireComponent(typeof(Collider))]
     public class Brick : MonoBehaviour
     {
+        [SerializeField,Min(0)] private float m_Height;
+
         private bool m_OnGrounded;
 
         private Rigidbody m_rigidbody;
@@ -25,12 +27,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
         /// </summary>
         public event Action<Brick, Collision> OnCollision;
 
-        private void Awake()
-        {
-            m_rigidbody = GetComponent<Rigidbody>();
-            SetAngularDrag(10f);
-        }
-
         private void OnEnable()
         {
             Crane.Instance.Component.Hook.OnDrop += OnDrop;
@@ -42,6 +38,12 @@ namespace DiaGna.ObjectFalling.BrickUtility
             {
                 Crane.Instance.Component.Hook.OnDrop -= OnDrop;
             }
+        }
+
+        public void Active()
+        {
+            m_rigidbody = GetComponent<Rigidbody>();
+            SetAngularDrag(10f);
         }
 
         private void OnDrop(Brick brick)

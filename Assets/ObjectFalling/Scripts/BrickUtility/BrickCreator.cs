@@ -1,6 +1,7 @@
 using DiaGna.ObjectFalling.CraneManaging;
 using DiaGna.ObjectFalling.Gameplay;
 using DiaGna.ObjectFalling.GroundUtility;
+using DiaGna.ObjectFalling.LevelUtility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -72,15 +73,33 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private Brick GetBrick()
         {
+            Brick brick;
             if (m_BrickPrefabs.Count == 0)
             {
-                Debug.LogError("No brick avaialbe!");
-                return null;
+                var prefab = GetFromResource();
+                brick = Instantiate(prefab);
+            }
+            else
+            {
+                brick = Instantiate(m_BrickPrefabs[Random.Range(0, m_BrickPrefabs.Count)]);
             }
 
-            var brick = Instantiate(m_BrickPrefabs[Random.Range(0, m_BrickPrefabs.Count)]);
+            if (brick == null)
+            {
+                Debug.LogError("No brick avaialbe!");
+            }
 
+            brick.Active();
             return brick;
+        }
+
+        private Brick GetFromResource()
+        {
+            if (LevelLoader.Instance.IsLevelActive)
+            {
+                return LevelLoader.Instance.ActiveLevel.GetRandomBricks();
+            }
+            return null;
         }
     }
 }

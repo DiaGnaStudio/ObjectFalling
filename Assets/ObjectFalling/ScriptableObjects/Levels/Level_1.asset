@@ -17,4 +17,21 @@ MonoBehaviour:
     m_levelIndex: 0
     m_winHeight: 10
     m_brickCount: 30
-    m_brickPrefabs: []
+    m_brickPrefabs:
+    - {fileID: 7307555864325069228, guid: 4433e6eaa2ac43c41846a640afa39bfa, type: 3}
+    - {fileID: 2254210063919073802, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+    - {fileID: 8002888898574659795, guid: 2714cedd21904f14ba72c6d3f51c1a2b, type: 3}
+    - {fileID: 6510243107821884481, guid: 860136e54746c8a4eaeab9717ef3ca33, type: 3}
+    - {fileID: 7875624081416412146, guid: 16b8d04862f6a284382917ba5d91a420, type: 3}
+    - {fileID: 7530569246141533973, guid: c049ff99142fdd6439c85336474e2055, type: 3}
+    - {fileID: 357849896942130434, guid: 5b73d637a7bb40d49818e99f9a68b300, type: 3}
+    - {fileID: 7124188215408770267, guid: bbf2aa61eb93c034b8a4943a2a8304ef, type: 3}
+    - {fileID: 7496903949463071125, guid: b9fc346e547291149b415814e8a1fa1d, type: 3}
+    - {fileID: 77104209567869329, guid: cda5619e071e870498b9d1b96c30ad2f, type: 3}
+    - {fileID: 3351843056049110647, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+    - {fileID: 7250772530736827220, guid: ebdbdb87fc30d524687fce2ae22f5335, type: 3}
+    - {fileID: 1921256307355059680, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+    - {fileID: 4383827671666339731, guid: 1a07209d73ae10b4da4a4d2a5a0cc263, type: 3}
+    - {fileID: 558943308684136437, guid: a5c40f2caf039644181a464a05c671d7, type: 3}
+    - {fileID: 7798408058983610806, guid: 94fb09df444936c4f944a6145805b0d0, type: 3}
+    - {fileID: 1787090940969161395, guid: 34338694351c25e4eba5332a2308d442, type: 3}
