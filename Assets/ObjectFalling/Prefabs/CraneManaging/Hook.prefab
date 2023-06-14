@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2be6324ee4f294fab5060f49082689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPosition: {x: 0, y: 7.95, z: 0}
+  m_Offset: 2
 --- !u!54 &4801985994232648174
 Rigidbody:
   m_ObjectHideFlags: 0

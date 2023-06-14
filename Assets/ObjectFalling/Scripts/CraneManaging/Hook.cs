@@ -8,7 +8,7 @@ namespace DiaGna.ObjectFalling.CraneManaging
     [RequireComponent(typeof(Joint))]
     public class Hook : MonoBehaviour
     {
-        [SerializeField] private Vector3 objectPosition;
+        [SerializeField] private float m_Offset;
 
         private Brick m_CurrentBrick;
 
@@ -39,7 +39,7 @@ namespace DiaGna.ObjectFalling.CraneManaging
 
         public void AssignObject(Brick currentBrick)
         {
-            currentBrick.transform.position = objectPosition;
+            currentBrick.transform.position = new Vector3(0, transform.localPosition.y -m_Offset, 0);
             m_Joint.connectedBody = currentBrick.Rigidbody;
             m_CurrentBrick = currentBrick;
         }

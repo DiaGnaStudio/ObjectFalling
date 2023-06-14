@@ -43,8 +43,6 @@ namespace DiaGna.ObjectFalling.CraneManaging
 
         private void MoveHook(Vector2 vector)
         {
-            Debug.Log(vector);
-
             float horizontal = vector.x * m_Speed * Time.deltaTime;
             float vertical = vector.y * m_Speed * Time.deltaTime;
 

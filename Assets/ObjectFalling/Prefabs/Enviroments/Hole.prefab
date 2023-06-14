@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1621823016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1621823017}
+  - component: {fileID: 1621823019}
+  - component: {fileID: 1621823018}
+  m_Layer: 9
+  m_Name: Ender
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1621823017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621823016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -6.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5076449848647869691}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1621823019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621823016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 1, z: 100}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1621823018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621823016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f9a8fe618e9704da08013d025488cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5076449847726854430
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +69,7 @@ GameObject:
   - component: {fileID: 5076449847726854426}
   - component: {fileID: 5076449847726854427}
   - component: {fileID: 5076449847726854428}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +164,7 @@ GameObject:
   - component: {fileID: 5076449848113103303}
   - component: {fileID: 5076449848113103304}
   - component: {fileID: 5076449848113103305}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +259,7 @@ GameObject:
   - component: {fileID: 5076449848550000726}
   - component: {fileID: 5076449848550000727}
   - component: {fileID: 5076449848550000728}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Basement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +353,7 @@ GameObject:
   - component: {fileID: 5076449848647869691}
   - component: {fileID: 8942316967377050567}
   - component: {fileID: 5708167948708158854}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,6 +377,7 @@ Transform:
   - {fileID: 5076449849545208323}
   - {fileID: 5076449849403367883}
   - {fileID: 2424514161807407710}
+  - {fileID: 1621823017}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -363,7 +421,7 @@ GameObject:
   - component: {fileID: 5076449849403367880}
   - component: {fileID: 5076449849403367881}
   - component: {fileID: 5076449849403367882}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +516,7 @@ GameObject:
   - component: {fileID: 5076449849545208320}
   - component: {fileID: 5076449849545208321}
   - component: {fileID: 5076449849545208322}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +610,7 @@ GameObject:
   - component: {fileID: 2424514161807407710}
   - component: {fileID: 6572064705966098149}
   - component: {fileID: 1334046289449458124}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
