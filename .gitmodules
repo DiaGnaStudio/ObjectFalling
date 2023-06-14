@@ -1,3 +1,6 @@
 [submodule "Packages/UserInterface"]
 	path = Packages/UserInterface
 	url = https://github.com/DiaGnaStudio/UserInterface.git
+[submodule "Packages/Attribute"]
+	path = Packages/Attribute
+	url = https://github.com/DiaGnaStudio/Attribute.git
