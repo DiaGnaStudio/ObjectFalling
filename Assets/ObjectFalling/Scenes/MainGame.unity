@@ -147,6 +147,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &633625019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2675968254488038131, guid: b00914775de58f4439a178c8f98b1b1d, type: 3}
+  m_PrefabInstance: {fileID: 2675968254962242376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &633625022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633625019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec8ff3add93a22c48a78c3f91e85a2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ToGamePageParameter: InOut
+  m_RetunrHomePageParameter: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +572,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 593219038, guid: 2ee9cdbd0ba77c14aa08fc54028be6bb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 593219040, guid: 2ee9cdbd0ba77c14aa08fc54028be6bb, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 593219040, guid: 2ee9cdbd0ba77c14aa08fc54028be6bb, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3812394395068390231, guid: 2ee9cdbd0ba77c14aa08fc54028be6bb, type: 3}
       propertyPath: m_Name
       value: Canvas
