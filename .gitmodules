@@ -1,0 +1,3 @@
+[submodule "Packages/UserInterface"]
+	path = Packages/UserInterface
+	url = https://github.com/DiaGnaStudio/UserInterface.git

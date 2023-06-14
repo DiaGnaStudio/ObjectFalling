@@ -6,6 +6,14 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.dgs.userinterface": {
+      "version": "file:UserInterface",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.dgs.attribute": "0.1.0"
+      }
+    },
     "com.unity.cinemachine": {
       "version": "2.6.17",
       "depth": 0,
