@@ -9,8 +9,6 @@ namespace DiaGna.ObjectFalling
     public class FloatingJoystick : Joystick
     {
         public bool helded;
-        public event Action OnPointerDownEvent;
-        public event Action OnPointerUpEvent;
 
         protected override void Start()
         {
@@ -21,7 +19,6 @@ namespace DiaGna.ObjectFalling
         public override void OnPointerDown(PointerEventData eventData)
         {
             helded = true;
-            OnPointerDownEvent?.Invoke();
 
             background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
             background.gameObject.SetActive(true);
@@ -33,7 +30,6 @@ namespace DiaGna.ObjectFalling
             helded = false;
             //controller.Blast();
 
-            OnPointerUpEvent?.Invoke();
 
             background.gameObject.SetActive(false);
             base.OnPointerUp(eventData);

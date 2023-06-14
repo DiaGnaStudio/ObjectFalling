@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,6 +12,10 @@ namespace DiaGna.ObjectFalling
         public float Horizontal { get { return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; } }
         public float Vertical { get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; } }
         public Vector2 Direction { get { return new Vector2(Horizontal, Vertical); } }
+
+
+        public event Action OnPointerDownEvent;
+        public event Action OnPointerUpEvent;
 
         public float HandleRange
         {
@@ -64,6 +69,7 @@ namespace DiaGna.ObjectFalling
         public virtual void OnPointerDown(PointerEventData eventData)
         {
             OnDrag(eventData);
+            OnPointerDownEvent?.Invoke();
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -78,8 +84,6 @@ namespace DiaGna.ObjectFalling
             FormatInput();
             HandleInput(input.magnitude, input.normalized, radius, cam);
             handle.anchoredPosition = input * radius * handleRange;
-
-
         }
 
         protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
@@ -139,6 +143,7 @@ namespace DiaGna.ObjectFalling
         {
             input = Vector2.zero;
             handle.anchoredPosition = Vector2.zero;
+            OnPointerUpEvent?.Invoke();
         }
 
         protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)

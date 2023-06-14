@@ -1,4 +1,5 @@
 ﻿using DiaGna.ObjectFalling.BrickUtility;
+using DiaGna.ObjectFalling.UserInterface.Tools;
 using System;
 using UnityEngine;
 
@@ -24,6 +25,16 @@ namespace DiaGna.ObjectFalling.CraneManaging
             m_Joint = GetComponent<Joint>();
         }
 
+        private void OnEnable()
+        {
+            MoverEvent.OnPointerUp += DropObject;
+        }
+
+        private void OnDisable()
+        {
+            MoverEvent.OnPointerUp -= DropObject;
+        }
+
         public void AssignObject(Brick currentBrick)
         {
             currentBrick.transform.position = objectPosition;
@@ -31,7 +42,7 @@ namespace DiaGna.ObjectFalling.CraneManaging
             m_CurrentBrick = currentBrick;
         }
 
-        public void DropObject()
+        private void DropObject()
         {
             if (m_Joint.connectedBody == null) return;
             m_Joint.connectedBody = null;
@@ -39,12 +50,12 @@ namespace DiaGna.ObjectFalling.CraneManaging
             OnDrop?.Invoke(m_CurrentBrick);
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                DropObject();
-            }
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space))
+        //    {
+        //        DropObject();
+        //    }
+        //}
     }
 }
