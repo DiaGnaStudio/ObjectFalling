@@ -7,13 +7,9 @@ using UnityEngine;
 
 namespace DiaGna.ObjectFalling.Gameplay
 {
-
     public class HeightController : ComponentSingleton<HeightController>
     {
         private float m_CurrentHight;
-
-        [Header("Line")]
-        [SerializeField] private Material m_LineMaterial;
 
         public float CurrentHight => m_CurrentHight;
 
@@ -28,11 +24,6 @@ namespace DiaGna.ObjectFalling.Gameplay
         /// </summary>
         public event Action<bool> OnReached;
         public event Action<float> OnChangeHeight;
-
-        private void Awake()
-        {
-            CreateFinishLine();
-        }
 
         private void OnEnable()
         {
@@ -82,15 +73,6 @@ namespace DiaGna.ObjectFalling.Gameplay
             UnityEditor.Handles.color = Color.green;
             UnityEditor.Handles.DrawWireDisc(hightPosition, Vector3.up, 5);
 #endif
-        }
-
-        private void CreateFinishLine()
-        {
-            var line = transform.GetChild(0);
-            line.SetParent(transform);
-            line.localPosition = new Vector3(3, WinHight / 2, 0);
-            line.localRotation = Quaternion.Euler(0, 45, 0);
-            line.localScale = new Vector3(0.5f, WinHight, 0.5f);
         }
     }
 }
