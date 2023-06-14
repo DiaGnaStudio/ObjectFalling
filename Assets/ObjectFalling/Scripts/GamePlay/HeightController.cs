@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DiaGna.ObjectFalling.Gameplay
 {
-    public class FinishLine : MonoBehaviour
+    public class HeightController : MonoBehaviour
     {
         [SerializeField] private float m_WinHight;
         private float m_CurrentHight;
@@ -31,6 +31,7 @@ namespace DiaGna.ObjectFalling.Gameplay
         {
             Ground.Instance.OnRotated += CheckBricksHeight;
         }
+
         private void OnDisable()
         {
             if (Ground.IsAlive)
@@ -43,12 +44,6 @@ namespace DiaGna.ObjectFalling.Gameplay
         {
             m_CurrentHight = brick.GetBrickHight();
 
-            Debug.Log("H = " + m_CurrentHight);
-            //bool increaseHeight = m_CurrentHight > m_LastHight;
-            //if(increaseHeight)
-            //{
-            //    m_LastHight = m_CurrentHight;
-            //}
             OnChangeHeight?.Invoke(m_CurrentHight);
 
             bool isReached = m_CurrentHight >= m_WinHight;

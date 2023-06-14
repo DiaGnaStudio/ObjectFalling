@@ -14,8 +14,6 @@ namespace DiaGna.ObjectFalling.GroundUtility
     {
         [Header("Components")]
         [SerializeField] private GroundRotator m_groundRotator;
-        [SerializeField] private float m_moveDownDuration;
-        private float m_lastHeight;
 
         /// <summary>
         /// <inheritdoc cref="GroundRotator.OnRotated"/>
@@ -24,40 +22,6 @@ namespace DiaGna.ObjectFalling.GroundUtility
         {
             add => m_groundRotator.OnRotated += value;
             remove => m_groundRotator.OnRotated -= value;
-        }
-
-        private void OnEnable()
-        {
-            FinishLine.OnChangeHeight += MoveDown;
-        }
-
-        private void OnDisable()
-        {
-            FinishLine.OnChangeHeight -= MoveDown;
-        }
-
-        private void MoveDown(float newHeight)
-        {
-            if (newHeight > m_lastHeight)
-            {
-                StartCoroutine(MoveDownCoroutine(newHeight));
-            }
-        }
-
-        IEnumerator MoveDownCoroutine(float newHeight)
-        {
-            float moveAmount = newHeight - m_lastHeight;
-            float movePerFrame = moveAmount / (m_moveDownDuration / Time.deltaTime);
-            m_lastHeight = newHeight;
-
-
-            float currentMoveAmount = 0f;
-            while (currentMoveAmount < moveAmount)
-            {
-                transform.Translate(0f, movePerFrame, 0f);
-                currentMoveAmount += movePerFrame;
-                yield return null;
-            }
         }
     }
 }

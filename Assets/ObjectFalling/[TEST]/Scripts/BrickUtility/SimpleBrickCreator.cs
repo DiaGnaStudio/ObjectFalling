@@ -12,14 +12,19 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
     {
         [SerializeField, Min(0)] private float m_Delay = 1;
 
+        private void Start()
+        {
+            Creating();
+        }
+
         private void OnEnable()
         {
-            FinishLine.OnReached += CheckCrating;
+            HeightController.OnReached += CheckCrating;
         }
 
         private void OnDisable()
         {
-            FinishLine.OnReached -= CheckCrating;
+            HeightController.OnReached -= CheckCrating;
         }
 
         private void CheckCrating(bool isWin)

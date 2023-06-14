@@ -27,12 +27,12 @@ namespace DiaGna.ObjectFalling.CraneManaging
 
         private void OnEnable()
         {
-            MoverEvent.OnPointerUp += DropObject;
+            MoverJoystick.OnPointerUp += DropObject;
         }
 
         private void OnDisable()
         {
-            MoverEvent.OnPointerUp -= DropObject;
+            MoverJoystick.OnPointerUp -= DropObject;
         }
 
         public void AssignObject(Brick currentBrick)
