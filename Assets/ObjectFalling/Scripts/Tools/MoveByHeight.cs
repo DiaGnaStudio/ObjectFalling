@@ -15,12 +15,15 @@ namespace DiaGna.ObjectFalling.GroundUtility
 
         private void OnEnable()
         {
-            HeightController.OnChangeHeight += Check;
+            HeightController.Instance.OnChangeHeight += Check;
         }
 
         private void OnDisable()
         {
-            HeightController.OnChangeHeight -= Check;
+            if (HeightController.IsAlive)
+            {
+                HeightController.Instance.OnChangeHeight -= Check;
+            }
         }
 
         private void Check(float currentHight)

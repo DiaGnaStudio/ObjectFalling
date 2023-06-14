@@ -17,13 +17,13 @@ namespace DiaGna.ObjectFalling.AnimationUtility
         private void OnEnable()
         {
             MoverEvent.OnPointerUp += Relesing;
-            MoverJoystick.OnPointerUp += Relesing;
+            MoverJoystick.OnPointerUpEvent += Relesing;
         }
 
         private void OnDisable()
         {
             MoverEvent.OnPointerUp -= Relesing;
-            MoverJoystick.OnPointerUp -= Relesing;
+            MoverJoystick.OnPointerUpEvent -= Relesing;
         }
 
         private void Relesing()

@@ -1,3 +1,4 @@
+using DiaGna.Framework.Singletons;
 using DiaGna.ObjectFalling.BrickUtility;
 using DiaGna.ObjectFalling.GroundUtility;
 using System;
@@ -5,22 +6,28 @@ using UnityEngine;
 
 namespace DiaGna.ObjectFalling.Gameplay
 {
-    public class HeightController : MonoBehaviour
+    public class HeightController : ComponentSingleton<HeightController>
     {
         [SerializeField] private float m_WinHight;
         private float m_CurrentHight;
-        private float m_LastHight;
 
         [Header("Line")]
         [SerializeField] private Material m_LineMaterial;
+
+
+        public float WinHight => m_WinHight;
+
+        public float CurrentHight => m_CurrentHight;
+
+        public bool IsWin => m_CurrentHight >= m_WinHight;
 
         /// <summary>
         /// Invoke when a brick fall down and ground rotating is down.
         /// <para></para>
         /// <b>Parameters:</b> returns true if the bricks hight reached to the win hight.
         /// </summary>
-        public static event Action<bool> OnReached;
-        public static event Action<float> OnChangeHeight;
+        public event Action<bool> OnReached;
+        public event Action<float> OnChangeHeight;
 
         private void Awake()
         {
@@ -42,13 +49,17 @@ namespace DiaGna.ObjectFalling.Gameplay
 
         private void CheckBricksHeight(Brick brick)
         {
-            m_CurrentHight = brick.GetBrickHight();
+            var lastHeight = brick.GetBrickHight();
+            if (lastHeight > m_CurrentHight)
+            {
+                m_CurrentHight = lastHeight;
 
-            OnChangeHeight?.Invoke(m_CurrentHight);
+                OnChangeHeight?.Invoke(m_CurrentHight);
 
-            bool isReached = m_CurrentHight >= m_WinHight;
+                bool isReached = m_CurrentHight >= m_WinHight;
 
-            OnReached?.Invoke(isReached);
+                OnReached?.Invoke(isReached);
+            }
         }
 
         private void OnDrawGizmos()

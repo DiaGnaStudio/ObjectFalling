@@ -1,5 +1,6 @@
 using DiaGna.ObjectFalling.CraneManaging;
 using DiaGna.ObjectFalling.Gameplay;
+using DiaGna.ObjectFalling.GroundUtility;
 using System.Collections;
 using UnityEngine;
 
@@ -19,17 +20,20 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
 
         private void OnEnable()
         {
-            HeightController.OnReached += CheckCrating;
+            Ground.Instance.OnRotated += CheckCrating;
         }
 
         private void OnDisable()
         {
-            HeightController.OnReached -= CheckCrating;
+            if (Ground.IsAlive)
+            {
+                Ground.Instance.OnRotated -= CheckCrating;
+            }
         }
 
-        private void CheckCrating(bool isWin)
+        private void CheckCrating(Brick brick)
         {
-            if (isWin) return;
+            if (HeightController.Instance.IsWin) return;
 
             Creating();
         }
