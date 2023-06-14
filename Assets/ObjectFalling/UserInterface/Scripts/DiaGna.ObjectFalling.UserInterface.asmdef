@@ -1,0 +1,20 @@
+{
+    "name": "DiaGna.ObjectFalling.UserInterface",
+    "rootNamespace": "DiaGna.ObjectFalling.UserInterface",
+    "references": [
+        "DiaGna.ObjectFalling",
+        "DiaGna.UserInterface",
+        "DiaGna.Freamwork"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
