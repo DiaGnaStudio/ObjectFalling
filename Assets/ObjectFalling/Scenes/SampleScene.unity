@@ -394,6 +394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimpleBrickCreator
       objectReference: {fileID: 0}
+    - target: {fileID: 2902960516649128347, guid: 69ce5ddc0f4b34447956a4e0f2137179, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69ce5ddc0f4b34447956a4e0f2137179, type: 3}
 --- !u!1001 &3812394393691710979
