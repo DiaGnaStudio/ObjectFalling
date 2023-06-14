@@ -4,7 +4,8 @@
     "references": [
         "DiaGna.ObjectFalling",
         "DiaGna.UserInterface",
-        "DiaGna.Freamwork"
+        "DiaGna.Freamwork",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

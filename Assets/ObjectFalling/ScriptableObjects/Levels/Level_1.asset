@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aa0c833b1477e64e8410da030ce0414, type: 3}
-  m_Name: New Level Data
+  m_Name: Level_1
   m_EditorClassIdentifier: 
   data:
-    m_id: 
+    m_id: Level1
     m_levelIndex: 0
-    m_winHeight: 0
-    m_brickCount: 0
+    m_winHeight: 10
+    m_brickCount: 30
     m_brickPrefabs: []

@@ -1,22 +1,24 @@
-using System.Collections;
+using DiaGna.ObjectFalling.BrickUtility;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using DiaGna.ObjectFalling.BrickUtility;
 using Random = UnityEngine.Random;
 
 namespace DiaGna.ObjectFalling
 {
     [Serializable]
-    public class LevelData 
+    public class LevelData
     {
         [SerializeField] private string m_id;
-        [SerializeField,Min(0)] private int m_levelIndex;
-        [SerializeField] private float m_winHeight;
-        [SerializeField,Min(0)] private int m_brickCount;
+        [SerializeField, Min(0)] private int m_levelIndex;
+        [SerializeField, Min(0)] private float m_winHeight;
+        [SerializeField, Min(0)] private int m_brickCount;
         [SerializeField] private List<Brick> m_brickPrefabs = new List<Brick>();
 
-        public string LevelIndex => m_levelIndex.ToString();
+        public int LevelIndex => m_levelIndex;
+
+        public float WinHeight => m_winHeight;
+        public int BrickCount => m_brickCount;
 
         public bool Equals(int level)
         {

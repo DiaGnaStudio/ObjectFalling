@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc52d58d95f28a8439d988d4d04c3d91, type: 3}
-  m_Name: New Profile Data
+  m_Script: {fileID: 11500000, guid: 5aa0c833b1477e64e8410da030ce0414, type: 3}
+  m_Name: Level_2
   m_EditorClassIdentifier: 
   data:
-    m_id: 
-    m_currentLevel: 
-    m_goldAmount: 0
+    m_id: Level2
+    m_levelIndex: 1
+    m_winHeight: 11
+    m_brickCount: 25
+    m_brickPrefabs: []

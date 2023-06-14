@@ -1,17 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
 
-namespace DiaGna.ObjectFalling
+namespace DiaGna.ObjectFalling.ProfileUtility
 {
     [Serializable]
-    public class ProfileData
+    public struct ProfileData
     {
-        [SerializeField] private string m_id;
-        [SerializeField] private string m_currentLevel;
-        [SerializeField,Min(0)] private int m_goldAmount;
+        public string Id { get; private set; }
+        public int CurrentLevelIndex { get; private set; }
+        public int GoldAmount { get; private set; }
 
-        public string CurrentLevel => m_currentLevel;
+        public ProfileData(string id, int currentLevelIndex, int goldAmount)
+        {
+            Id = id;
+            CurrentLevelIndex = currentLevelIndex;
+            GoldAmount = goldAmount;
+        }
+
+        public void WinGame()
+        {
+            CurrentLevelIndex++;
+        }
     }
+
+
+    public class ProfileKeys
+    {
+        public const string Profile = "PROFILE";
+    }
+
 }

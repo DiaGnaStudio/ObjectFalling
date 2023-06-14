@@ -1,31 +1,42 @@
+using DiaGna.Framework.Singletons;
+using DiaGna.ObjectFalling.Gameplay;
+using DiaGna.ObjectFalling.ProfileUtility;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DiaGna.ObjectFalling
+namespace DiaGna.ObjectFalling.LevelUtility
 {
-    public class LevelLoader : MonoBehaviour
+    public class LevelLoader : ComponentSingleton<LevelLoader>
     {
-        public static LevelLoader Instance { get; private set; }
-
         [SerializeField] private List<LevelDataAsset> levels = new List<LevelDataAsset>();
 
-        public event Action OnLoadLevel;
+        public event Action<LevelData> OnLoadLevel;
 
-        private void Awake()
+        public bool IsLevelActive { get; private set; }
+        public LevelData ActiveLevel { get; private set; }
+
+        private void OnEnable()
         {
-            if (!Instance)
-                Instance = this;
-            else
-                Destroy(gameObject);
+            GlobalEvent.OnFinishGame += FinishActiveLevel;
+        }
+
+        private void OnDisable()
+        {
+            GlobalEvent.OnFinishGame -= FinishActiveLevel;
+        }
+
+        private void FinishActiveLevel(bool isWin)
+        {
+            IsLevelActive = false;
         }
 
         public void LoadProfile(ProfileData profileData)
         {
-            foreach (LevelDataAsset level in levels)
+            for (int i = 0; i < levels.Count; i++)
             {
-                bool isCurrentLevel = level.data.LevelIndex == profileData.CurrentLevel;
+                LevelDataAsset level = levels[i];
+                bool isCurrentLevel = i == (profileData.CurrentLevelIndex % levels.Count);
                 if (isCurrentLevel)
                 {
                     LoadLevel(level.data);
@@ -36,7 +47,11 @@ namespace DiaGna.ObjectFalling
 
         private void LoadLevel(LevelData levelData)
         {
-            OnLoadLevel?.Invoke();
+            if (IsLevelActive) return;
+            IsLevelActive = true;
+
+            ActiveLevel = levelData;
+            OnLoadLevel?.Invoke(levelData);
         }
     }
 }
