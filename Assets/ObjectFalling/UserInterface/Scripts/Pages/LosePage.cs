@@ -1,16 +1,13 @@
-using DiaGna.ObjectFalling.Gameplay;
+﻿using DiaGna.ObjectFalling.Gameplay;
 using DiaGna.UserInterface;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DiaGna.ObjectFalling.UserInterface
 {
-    public class HomePage : UIPageBase
+    public class LosePage : UIPageBase
     {
-        public static event Action OnPageLoaded;
-
-        [SerializeField] private Button m_PlayButton;
+        [SerializeField] private Button m_RetryButton;
 
         protected override void OnLoadPage()
         {
@@ -18,16 +15,15 @@ namespace DiaGna.ObjectFalling.UserInterface
 
         protected override void OnOpenPage()
         {
-            OnPageLoaded?.Invoke();
-            m_PlayButton.onClick.AddListener(StartGame);
+            m_RetryButton.onClick.AddListener(Retring);
         }
 
         protected override void OnClosePage()
         {
-            m_PlayButton.onClick.RemoveListener(StartGame);
+            m_RetryButton.onClick.RemoveListener(Retring);
         }
 
-        private void StartGame()
+        private void Retring()
         {
             GlobalEvent.StartGame();
         }

@@ -17,12 +17,6 @@ namespace DiaGna.ObjectFalling.Gameplay
 
         public float WinHight { get; private set; }
 
-        /// <summary>
-        /// Invoke when a brick fall down and ground rotating is down.
-        /// <para></para>
-        /// <b>Parameters:</b> returns true if the bricks hight reached to the win hight.
-        /// </summary>
-        public event Action<bool> OnReached;
         public event Action<float> OnChangeHeight;
 
         private void OnEnable()
@@ -58,9 +52,10 @@ namespace DiaGna.ObjectFalling.Gameplay
 
                 OnChangeHeight?.Invoke(m_CurrentHight);
 
-                bool isReached = m_CurrentHight >= WinHight;
-
-                OnReached?.Invoke(isReached);
+                if (IsWin)
+                {
+                    GlobalEvent.FinishGame(true);
+                }
             }
         }
 

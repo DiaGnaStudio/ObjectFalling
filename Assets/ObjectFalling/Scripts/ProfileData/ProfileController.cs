@@ -30,7 +30,10 @@ namespace DiaGna.ObjectFalling.ProfileUtility
 
         private void UpdateProfile(bool isWin)
         {
-            m_Loader.Profile.WinGame();
+            if (isWin)
+            {
+                m_Loader.Profile.WinGame();
+            }
         }
     }
 }

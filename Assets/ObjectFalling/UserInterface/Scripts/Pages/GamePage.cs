@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using DiaGna.UserInterface;
-using UnityEngine.UI;
-using DiaGna.ObjectFalling.Gameplay;
+﻿using DiaGna.ObjectFalling.Gameplay;
 using DiaGna.ObjectFalling.LevelUtility;
-using System;
+using DiaGna.UserInterface;
+using DiaGna.UserInterface.Controller;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace DiaGna.ObjectFalling.UserInterface
 {
@@ -11,17 +11,21 @@ namespace DiaGna.ObjectFalling.UserInterface
     {
         [SerializeField] private Slider m_HeightSlider;
 
+        [Header("Other Pages")]
+        [SerializeField] private UIPageBase m_WinPage;
+        [SerializeField] private UIPageBase m_LosePage;
+
         protected override void OnLoadPage()
         {
-            
+
         }
 
         protected override void OnOpenPage()
         {
-            GlobalEvent.StartGame();
-
             HeightController.Instance.OnChangeHeight += ChangeHeight;
             LevelLoader.Instance.OnLoadLevel += SetMaxHieght;
+
+            GlobalEvent.OnFinishGame += OpenPage;
         }
 
         protected override void OnClosePage()
@@ -35,6 +39,8 @@ namespace DiaGna.ObjectFalling.UserInterface
             {
                 LevelLoader.Instance.OnLoadLevel += SetMaxHieght;
             }
+
+            GlobalEvent.OnFinishGame -= OpenPage;
         }
 
         private void SetMaxHieght(LevelData data)
@@ -47,6 +53,18 @@ namespace DiaGna.ObjectFalling.UserInterface
         private void ChangeHeight(float currentHeight)
         {
             m_HeightSlider.value = currentHeight;
+        }
+
+        private void OpenPage(bool isWin)
+        {
+            if (isWin)
+            {
+                UserInterfaceUtility.OpenPage(m_WinPage);
+            }
+            else
+            {
+                UserInterfaceUtility.OpenPage(m_LosePage);
+            }
         }
     }
 }

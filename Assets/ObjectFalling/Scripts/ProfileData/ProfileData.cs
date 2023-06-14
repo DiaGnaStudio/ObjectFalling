@@ -3,7 +3,7 @@ using System;
 namespace DiaGna.ObjectFalling.ProfileUtility
 {
     [Serializable]
-    public struct ProfileData
+    public class ProfileData
     {
         public string Id { get; private set; }
         public int CurrentLevelIndex { get; private set; }

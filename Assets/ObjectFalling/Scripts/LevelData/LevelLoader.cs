@@ -18,40 +18,45 @@ namespace DiaGna.ObjectFalling.LevelUtility
 
         private void OnEnable()
         {
+            GlobalEvent.OnStartGame += LoadLevel;
             GlobalEvent.OnFinishGame += FinishActiveLevel;
+        }
+
+        private void LoadLevel()
+        {
+            if (IsLevelActive) return;
+            IsLevelActive = true;
+
+            var newLevel = GetLevel(ProfileController.Instance.Profile.CurrentLevelIndex);
+            ActiveLevel = newLevel;
+            OnLoadLevel?.Invoke(newLevel);
         }
 
         private void OnDisable()
         {
+            GlobalEvent.OnStartGame -= LoadLevel;
             GlobalEvent.OnFinishGame -= FinishActiveLevel;
         }
 
         private void FinishActiveLevel(bool isWin)
         {
             IsLevelActive = false;
+            ActiveLevel = null;
         }
 
-        public void LoadProfile(ProfileData profileData)
+        private LevelData GetLevel(int levelIndex)
         {
             for (int i = 0; i < levels.Count; i++)
             {
                 LevelDataAsset level = levels[i];
-                bool isCurrentLevel = i == (profileData.CurrentLevelIndex % levels.Count);
+                bool isCurrentLevel = i == (levelIndex % levels.Count);
                 if (isCurrentLevel)
                 {
-                    LoadLevel(level.data);
-                    break;
+                    return level.data;
                 }
             }
+            return null;
         }
 
-        private void LoadLevel(LevelData levelData)
-        {
-            if (IsLevelActive) return;
-            IsLevelActive = true;
-
-            ActiveLevel = levelData;
-            OnLoadLevel?.Invoke(levelData);
-        }
     }
 }

@@ -2,6 +2,7 @@
 using DiaGna.ObjectFalling.GroundUtility;
 using DiaGna.ObjectFalling.LevelUtility;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DiaGna.ObjectFalling.Gameplay
@@ -9,18 +10,26 @@ namespace DiaGna.ObjectFalling.Gameplay
     public class BrickCountAnnouncer : MonoBehaviour
     {
         public int Count { get; private set; }
-        public int ThrowedCount { get; private set; } = 0;
+        public int ThrowedCount => AvailableBricks.Count;
 
         /// <summary>
         /// Parameters: brick throwed count, total count
         /// </summary>
         public static event Action<int, int> OnIncrease;
 
+        private List<Brick> AvailableBricks;
+
+        private void Awake()
+        {
+            AvailableBricks = new List<Brick>();
+        }
+
         private void OnEnable()
         {
             LevelLoader.Instance.OnLoadLevel += SetBrickCount;
             Ground.Instance.OnRotated += AddBrick;
             GlobalEvent.OnStartGame += StartCounting;
+            GlobalEvent.OnFinishGame += DestoyBricks;
 
             if (LevelLoader.Instance.IsLevelActive)
             {
@@ -41,11 +50,12 @@ namespace DiaGna.ObjectFalling.Gameplay
             }
 
             GlobalEvent.OnStartGame -= StartCounting;
+            GlobalEvent.OnFinishGame -= DestoyBricks;
         }
 
         private void StartCounting()
         {
-            ThrowedCount = 0;
+            AvailableBricks.Clear();
         }
 
         private void SetBrickCount(LevelData data)
@@ -55,7 +65,7 @@ namespace DiaGna.ObjectFalling.Gameplay
 
         private void AddBrick(Brick brick)
         {
-            ThrowedCount++;
+            AvailableBricks.Add(brick);
 
             if (ThrowedCount >= Count)
             {
@@ -64,6 +74,14 @@ namespace DiaGna.ObjectFalling.Gameplay
             }
 
             OnIncrease?.Invoke(ThrowedCount, Count);
+        }
+
+        private void DestoyBricks(bool obj)
+        {
+            foreach (var brick in AvailableBricks)
+            {
+                Destroy(brick.gameObject);
+            }
         }
     }
 }

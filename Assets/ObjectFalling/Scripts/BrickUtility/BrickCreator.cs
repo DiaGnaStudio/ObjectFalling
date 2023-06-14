@@ -15,6 +15,8 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private List<Brick> m_BrickPrefabs = new List<Brick>();
 
+        private Coroutine m_CreatingCoroutine;
+
         public void AddPrefab(Brick prefab)
         {
             if (m_BrickPrefabs.Contains(prefab)) return;
@@ -31,7 +33,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private void OnDisable()
         {
-            GlobalEvent.OnStartGame -= Creating;
+            GlobalEvent.OnStartGame -= StartCreating;
             GlobalEvent.OnFinishGame -= StopCreating;
             if (Ground.IsAlive)
             {
@@ -48,19 +50,24 @@ namespace DiaGna.ObjectFalling.BrickUtility
         private void StopCreating(bool isWin)
         {
             m_CanCreate = false;
+
+            if (m_CreatingCoroutine != null)
+            {
+                StopCoroutine(m_CreatingCoroutine);
+                m_CreatingCoroutine = null;
+            }
         }
 
         private void CheckCrating(Brick brick)
         {
-            if (!m_CanCreate) return;
-
             Creating();
         }
 
         private void Creating()
         {
+            if (!m_CanCreate) return;
             m_CanCreate = true;
-            StartCoroutine(WaitToCreate());
+            m_CreatingCoroutine = StartCoroutine(WaitToCreate());
         }
 
         private IEnumerator WaitToCreate()

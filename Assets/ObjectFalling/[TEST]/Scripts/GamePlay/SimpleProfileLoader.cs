@@ -8,7 +8,7 @@ namespace DiaGna.ObjectFalling.ProfileUtility.Test
     {
         public override ProfileData Profile { get; protected set; }
 
-        private void Start()
+        private void Awake()
         {
             if (PlayerPrefs.HasKey(ProfileKeys.Profile))
             {
@@ -19,8 +19,12 @@ namespace DiaGna.ObjectFalling.ProfileUtility.Test
                 Profile = new ProfileData("User", 0, 0);
                 PlayerPrefs.SetString(ProfileKeys.Profile, JsonConvert.SerializeObject(Profile));
             }
+        }
 
-            LevelLoader.Instance.LoadProfile(Profile);
+        private void OnApplicationQuit()
+        {
+            PlayerPrefs.SetString(ProfileKeys.Profile, JsonConvert.SerializeObject(Profile));
+            PlayerPrefs.Save();
         }
     }
 }

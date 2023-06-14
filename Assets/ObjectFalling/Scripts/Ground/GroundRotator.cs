@@ -80,6 +80,7 @@ namespace DiaGna.ObjectFalling.GroundUtility
         private void EndRotation()
         {
             var brick = m_BrickList[m_BrickList.Count - 1];
+
             OnRotated?.Invoke(brick);
         }
     }

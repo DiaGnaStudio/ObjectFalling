@@ -1,7 +1,4 @@
 using DiaGna.ObjectFalling.Gameplay;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DiaGna.ObjectFalling.UserInterface.Tools
@@ -12,6 +9,8 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
         private Animator m_Animator;
         [SerializeField] private string m_ToGamePageParameter;
         [SerializeField] private string m_RetunrHomePageParameter;
+        [SerializeField] private string m_FinishParameter;
+
         private void Awake()
         {
             m_Animator = GetComponent<Animator>();
@@ -20,16 +19,30 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
         private void OnEnable()
         {
             GlobalEvent.OnStartGame += Open;
+            GlobalEvent.OnFinishGame += Stay;
+            HomePage.OnPageLoaded += RetunHome;
         }
 
         private void OnDisable()
         {
             GlobalEvent.OnStartGame -= Open;
+            GlobalEvent.OnFinishGame -= Stay;
+            HomePage.OnPageLoaded -= RetunHome;
         }
 
         private void Open()
         {
             m_Animator.SetTrigger(m_ToGamePageParameter);
+        }
+
+        private void Stay(bool obj)
+        {
+            m_Animator.SetTrigger(m_FinishParameter);
+        }
+
+        private void RetunHome()
+        {
+            m_Animator.SetTrigger(m_RetunrHomePageParameter);
         }
     }
 }
