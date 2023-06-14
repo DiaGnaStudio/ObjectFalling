@@ -10,7 +10,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
     public class BrickCreator : MonoBehaviour
     {
         [SerializeField, Min(0)] private float m_Delay = 1;
-        private Coroutine m_CreatingCoroutine;
+        private bool m_CanCreate;
 
         private List<Brick> m_BrickPrefabs = new List<Brick>();
 
@@ -22,31 +22,44 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private void OnEnable()
         {
-            GlobalEvent.OnStartGame += Creating;
+            GlobalEvent.OnStartGame += StartCreating;
             GlobalEvent.OnFinishGame += StopCreating;
             Ground.Instance.OnRotated += CheckCrating;
         }
 
+
         private void OnDisable()
         {
             GlobalEvent.OnStartGame -= Creating;
+            GlobalEvent.OnFinishGame -= StopCreating;
             if (Ground.IsAlive)
             {
                 Ground.Instance.OnRotated -= CheckCrating;
             }
         }
 
+        private void StartCreating()
+        {
+            m_CanCreate = true;
+            Creating();
+        }
+
+        private void StopCreating(bool isWin)
+        {
+            m_CanCreate = false;
+        }
+
         private void CheckCrating(Brick brick)
         {
-            if (HeightController.Instance.IsWin) return;
+            if (!m_CanCreate) return;
 
             Creating();
         }
 
-        [ContextMenu("Creating")]
         private void Creating()
         {
-            m_CreatingCoroutine ??= StartCoroutine(WaitToCreate());
+            m_CanCreate = true;
+            StartCoroutine(WaitToCreate());
         }
 
         private IEnumerator WaitToCreate()
@@ -68,15 +81,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
             var brick = Instantiate(m_BrickPrefabs[Random.Range(0, m_BrickPrefabs.Count)]);
 
             return brick;
-        }
-        private void StopCreating(bool obj)
-        {
-            if (m_CreatingCoroutine != null)
-            {
-                StopCoroutine(m_CreatingCoroutine);
-
-                m_CreatingCoroutine = null;
-            }
         }
     }
 }

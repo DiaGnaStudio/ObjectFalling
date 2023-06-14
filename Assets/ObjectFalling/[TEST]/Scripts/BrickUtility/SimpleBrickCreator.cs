@@ -12,35 +12,48 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
     public class SimpleBrickCreator : MonoBehaviour
     {
         [SerializeField, Min(0)] private float m_Delay = 1;
-        private Coroutine m_CreatingCoroutine;
+        private bool m_CanCreate;
 
         private void OnEnable()
         {
-            GlobalEvent.OnStartGame += Creating;
+            GlobalEvent.OnStartGame += StartCreating;
             GlobalEvent.OnFinishGame += StopCreating;
             Ground.Instance.OnRotated += CheckCrating;
         }
 
+
         private void OnDisable()
         {
             GlobalEvent.OnStartGame -= Creating;
+            GlobalEvent.OnFinishGame -= StopCreating;
             if (Ground.IsAlive)
             {
                 Ground.Instance.OnRotated -= CheckCrating;
             }
         }
 
+        private void StartCreating()
+        {
+            m_CanCreate = true;
+            Creating();
+        }
+
+        private void StopCreating(bool isWin)
+        {
+            m_CanCreate = false;
+        }
+
         private void CheckCrating(Brick brick)
         {
-            if (HeightController.Instance.IsWin) return;
+            if (!m_CanCreate) return;
 
             Creating();
         }
 
-        [ContextMenu("Creating")]
         private void Creating()
         {
-            m_CreatingCoroutine ??= StartCoroutine(WaitToCreate());
+            m_CanCreate = true;
+            StartCoroutine(WaitToCreate());
         }
 
         private IEnumerator WaitToCreate()
@@ -62,15 +75,5 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
 
             return obj.AddComponent<Brick>();
         }
-        private void StopCreating(bool obj)
-        {
-            if (m_CreatingCoroutine != null)
-            {
-                StopCoroutine(m_CreatingCoroutine);
-
-                m_CreatingCoroutine = null;
-            }
-        }
-
     }
 }
