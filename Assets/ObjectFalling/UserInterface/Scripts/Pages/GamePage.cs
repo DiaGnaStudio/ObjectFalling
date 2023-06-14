@@ -2,6 +2,8 @@
 using DiaGna.UserInterface;
 using UnityEngine.UI;
 using DiaGna.ObjectFalling.Gameplay;
+using DiaGna.ObjectFalling.LevelUtility;
+using System;
 
 namespace DiaGna.ObjectFalling.UserInterface
 {
@@ -11,9 +13,7 @@ namespace DiaGna.ObjectFalling.UserInterface
 
         protected override void OnLoadPage()
         {
-            m_HeightSlider.minValue = 0;
-            m_HeightSlider.maxValue = HeightController.Instance.WinHight;
-            m_HeightSlider.value = 0;
+            
         }
 
         protected override void OnOpenPage()
@@ -21,11 +21,27 @@ namespace DiaGna.ObjectFalling.UserInterface
             GlobalEvent.StartGame();
 
             HeightController.Instance.OnChangeHeight += ChangeHeight;
+            LevelLoader.Instance.OnLoadLevel += SetMaxHieght;
         }
 
         protected override void OnClosePage()
         {
-            HeightController.Instance.OnChangeHeight -= ChangeHeight;
+            if (HeightController.IsAlive)
+            {
+                HeightController.Instance.OnChangeHeight -= ChangeHeight;
+            }
+
+            if (LevelLoader.IsAlive)
+            {
+                LevelLoader.Instance.OnLoadLevel += SetMaxHieght;
+            }
+        }
+
+        private void SetMaxHieght(LevelData data)
+        {
+            m_HeightSlider.minValue = 0;
+            m_HeightSlider.maxValue = data.WinHeight;
+            m_HeightSlider.value = 0;
         }
 
         private void ChangeHeight(float currentHeight)
