@@ -3,6 +3,7 @@ using DiaGna.ObjectFalling.BrickUtility;
 using DiaGna.ObjectFalling.GroundUtility;
 using DiaGna.ObjectFalling.LevelUtility;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DiaGna.ObjectFalling.Gameplay
@@ -10,18 +11,17 @@ namespace DiaGna.ObjectFalling.Gameplay
     public class HeightController : ComponentSingleton<HeightController>
     {
         private float m_CurrentHight;
+        public float m_WinHight;
 
-        public float CurrentHight => m_CurrentHight;
+        private List<Brick> m_CatchedBricks = new List<Brick>();
 
-        public bool IsWin => m_CurrentHight >= WinHight;
-
-        public float WinHight { get; private set; }
+        public bool IsWin => m_CurrentHight >= m_WinHight;
 
         public event Action<float> OnChangeHeight;
 
         private void OnEnable()
         {
-            Ground.Instance.OnRotated += CheckBricksHeight;
+            Ground.Instance.OnRotated += AddBrick;
             LevelLoader.Instance.OnLoadLevel += SetHeight;
         }
 
@@ -29,7 +29,7 @@ namespace DiaGna.ObjectFalling.Gameplay
         {
             if (Ground.IsAlive)
             {
-                Ground.Instance.OnRotated -= CheckBricksHeight;
+                Ground.Instance.OnRotated -= AddBrick;
             }
 
             if (LevelLoader.IsAlive)
@@ -40,21 +40,64 @@ namespace DiaGna.ObjectFalling.Gameplay
 
         private void SetHeight(LevelData data)
         {
-            WinHight = data.WinHeight;
+            m_WinHight = data.WinHeight;
         }
 
-        private void CheckBricksHeight(Brick brick)
+        private void AddBrick(Brick brick)
         {
-            var lastHeight = brick.GetBrickHight();
-            if (lastHeight > m_CurrentHight)
+            m_CatchedBricks.Add(brick);
+        }
+
+
+        //private void CheckBricksHeight(Brick brick)
+        //{
+        //    var lastHeight = brick.GetBrickHight();
+        //    if (lastHeight > m_CurrentHight)
+        //    {
+        //        m_CurrentHight = lastHeight;
+
+        //        OnChangeHeight?.Invoke(m_CurrentHight);
+
+        //        if (IsWin)
+        //        {
+        //            GlobalEvent.FinishGame(m_CurrentHight >= WinHight);
+        //        }
+        //    }
+        //}
+
+        private void Update()
+        {
+            var stableCount = 0;
+            foreach(var brist in m_CatchedBricks)
             {
-                m_CurrentHight = lastHeight;
-
-                OnChangeHeight?.Invoke(m_CurrentHight);
-
-                if (IsWin)
+                if (brist.IsStable)
                 {
-                    GlobalEvent.FinishGame(true);
+                    stableCount++;
+                }
+            }
+
+            if(stableCount == m_CatchedBricks.Count)
+            {
+                float maxHieght = 0;
+                foreach (var bricck in m_CatchedBricks)
+                {
+                    var height = bricck.GetBrickHight();
+                    if (height > maxHieght)
+                    {
+                        maxHieght = height;
+                    }
+                }
+
+                if (m_CurrentHight != maxHieght)
+                {
+                    m_CurrentHight = maxHieght;
+                    Debug.Log(m_CurrentHight);
+                    OnChangeHeight?.Invoke(m_CurrentHight);
+
+                    if (IsWin)
+                    {
+                        GlobalEvent.FinishGame(true);
+                    }
                 }
             }
         }
@@ -63,7 +106,7 @@ namespace DiaGna.ObjectFalling.Gameplay
         {
 #if UNITY_EDITOR
             Gizmos.color = Color.green;
-            var hightPosition = transform.position + Vector3.up * WinHight;
+            var hightPosition = transform.position + Vector3.up * m_WinHight;
             Gizmos.DrawLine(transform.position, hightPosition);
             UnityEditor.Handles.color = Color.green;
             UnityEditor.Handles.DrawWireDisc(hightPosition, Vector3.up, 5);

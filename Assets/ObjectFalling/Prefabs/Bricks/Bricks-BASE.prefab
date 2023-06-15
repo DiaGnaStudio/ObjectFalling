@@ -76,6 +76,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Height: 0
+  m_GroundLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &6251626245194090758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,5 +91,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c217967d3bc3144be134da23d1852d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 0}
-  m_HitParameter: Hit

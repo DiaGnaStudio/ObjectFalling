@@ -302,6 +302,8 @@ MonoBehaviour:
   title: 
   elements: []
   m_HeightSlider: {fileID: 4367975474800210355}
+  m_WinPage: {fileID: 0}
+  m_LosePage: {fileID: 0}
 --- !u!1 &3700945723019557247
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +774,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1135553669604794104, guid: 8b7022907cd1d4535a7f8e3fd499f9e7, type: 3}
       propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135553669604794104, guid: 8b7022907cd1d4535a7f8e3fd499f9e7, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1135553669604794106, guid: 8b7022907cd1d4535a7f8e3fd499f9e7, type: 3}

@@ -517,8 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a572153980fe505488b8ebe4ae558124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ViewHeight: 3.5
-  m_moveDownDuration: 0.1
+  m_ViewHeight: 4
+  m_Duration: 1
 --- !u!1 &4333744927847473717
 GameObject:
   m_ObjectHideFlags: 0

@@ -370,17 +370,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2541902502200946503, guid: c0f9e778c9f596343a3d6805de1034fa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2541902502402407368, guid: c0f9e778c9f596343a3d6805de1034fa, type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541902502402407370, guid: c0f9e778c9f596343a3d6805de1034fa, type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2541902502402407373, guid: c0f9e778c9f596343a3d6805de1034fa, type: 3}
       propertyPath: m_RootOrder
@@ -1065,6 +1057,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1621823016, guid: 4dcc7265bcdb35943b30213c52ce0565, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5076449847726854430, guid: 4dcc7265bcdb35943b30213c52ce0565, type: 3}
       propertyPath: m_IsActive
       value: 0

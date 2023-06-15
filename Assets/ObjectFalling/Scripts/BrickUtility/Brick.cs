@@ -17,6 +17,9 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private Rigidbody m_rigidbody;
 
+        [SerializeField] private LayerMask m_GroundLayer;
+        float m_DistanceToGround = 0;
+
         /// <summary>
         /// Reference of brick's rigidbody.
         /// </summary>
@@ -58,16 +61,40 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         public float GetBrickHight()
         {
-            var worldPosition = transform.TransformPoint(Vector3.zero);
-            return worldPosition.y;
+            if (Physics.Raycast(transform.position, -Vector3.up, out hitInfo, Mathf.Infinity, m_GroundLayer))
+            {
+                m_DistanceToGround = hitInfo.distance;
+            }
+
+            return Mathf.Ceil(m_DistanceToGround + m_Height);
         }
+        RaycastHit hitInfo;
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (Physics.Raycast(transform.position, -Vector3.up, out hitInfo, Mathf.Infinity, m_GroundLayer))
+            {
+                m_DistanceToGround = hitInfo.distance;
+            }
+
             if (m_OnGrounded) return;
             m_OnGrounded = true;
             transform.SetParent(collision.transform.root);
             OnCollision?.Invoke(this, collision);
+        }
+
+        public bool IsStable { get; private set; }
+
+        private void Update()
+        {
+            if(m_rigidbody.velocity.magnitude < 0.5f)
+            {
+                IsStable = true;
+            }
+            else
+            {
+                IsStable = false;
+            }
         }
     }
 }
