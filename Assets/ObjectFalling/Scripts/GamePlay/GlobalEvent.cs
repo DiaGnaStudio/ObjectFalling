@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DiaGna.ObjectFalling.Gameplay
@@ -10,6 +8,8 @@ namespace DiaGna.ObjectFalling.Gameplay
         public static event Action OnStartGame;
         public static event Action<bool> OnFinishGame;
 
+        public static bool IsWin { get; private set; }
+
         public static void StartGame()
         {
             OnStartGame?.Invoke();
@@ -17,7 +17,14 @@ namespace DiaGna.ObjectFalling.Gameplay
 
         public static void FinishGame(bool isWin)
         {
+            IsWin = isWin;
             OnFinishGame?.Invoke(isWin);
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void Reset()
+        {
+            IsWin = false;
         }
     }
 }

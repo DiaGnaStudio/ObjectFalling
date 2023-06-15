@@ -69,7 +69,7 @@ namespace DiaGna.ObjectFalling.Gameplay
 
             if (ThrowedCount >= Count)
             {
-                var isWin = HeightController.Instance.IsWin;
+                var isWin = GlobalEvent.IsWin;
                 GlobalEvent.FinishGame(isWin);
             }
 
