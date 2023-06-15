@@ -1,0 +1,284 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8631879336736153751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1757151351659322704}
+  m_Layer: 0
+  m_Name: Bricks-Bird_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1757151351659322704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631879336736153751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6350701675550512145}
+  - {fileID: 1425943922667880892}
+  - {fileID: 5164397821211405508}
+  - {fileID: 5403830849928645580}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &107642128891477987
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1757151351659322704}
+    m_Modifications:
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814503466799064963, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Bird
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+--- !u!4 &5403830849928645580 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+  m_PrefabInstance: {fileID: 107642128891477987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &876944086423132395
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1757151351659322704}
+    m_Modifications:
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814503466799064963, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Bird
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+--- !u!4 &5164397821211405508 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+  m_PrefabInstance: {fileID: 876944086423132395}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1414712964540309566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1757151351659322704}
+    m_Modifications:
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814503466799064963, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Bird
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+--- !u!4 &6350701675550512145 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+  m_PrefabInstance: {fileID: 1414712964540309566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6361844670930433427
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1757151351659322704}
+    m_Modifications:
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814503466799064963, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Bird
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+--- !u!4 &1425943922667880892 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5440392832222901295, guid: c2ac0b1fdd8780a48bda1ced76b181dc, type: 3}
+  m_PrefabInstance: {fileID: 6361844670930433427}
+  m_PrefabAsset: {fileID: 0}

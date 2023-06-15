@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4856984146105530381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 834668890781497217}
+  m_Layer: 0
+  m_Name: Bricks-Horse_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &834668890781497217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4856984146105530381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6093037539613920240}
+  - {fileID: 6753028378915068845}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2880905599335013375
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 834668890781497217}
+    m_Modifications:
+    - target: {fileID: 8024650720811848702, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Horse
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+--- !u!4 &6753028378915068845 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+  m_PrefabInstance: {fileID: 2880905599335013375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3369337611593157538
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 834668890781497217}
+    m_Modifications:
+    - target: {fileID: 8024650720811848702, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Horse
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+--- !u!4 &6093037539613920240 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8812589995560878162, guid: aa31346acdb6ba34a8a631740e7e5ed1, type: 3}
+  m_PrefabInstance: {fileID: 3369337611593157538}
+  m_PrefabAsset: {fileID: 0}

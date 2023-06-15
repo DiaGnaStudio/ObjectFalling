@@ -1,0 +1,284 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8166306531283063464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2121127176251691582}
+  m_Layer: 0
+  m_Name: Bricks-Lizard_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2121127176251691582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166306531283063464}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2329089504483006472}
+  - {fileID: 2360040419616339887}
+  - {fileID: 2496364297353096775}
+  - {fileID: 7316461938338713110}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3163883570645382611
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2121127176251691582}
+    m_Modifications:
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588984778154354793, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Lizard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+--- !u!4 &7316461938338713110 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+  m_PrefabInstance: {fileID: 3163883570645382611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7837892949356156290
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2121127176251691582}
+    m_Modifications:
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588984778154354793, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Lizard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+--- !u!4 &2496364297353096775 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+  m_PrefabInstance: {fileID: 7837892949356156290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7940834149153612749
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2121127176251691582}
+    m_Modifications:
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588984778154354793, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Lizard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+--- !u!4 &2329089504483006472 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+  m_PrefabInstance: {fileID: 7940834149153612749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7971820248792878186
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2121127176251691582}
+    m_Modifications:
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588984778154354793, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+      propertyPath: m_Name
+      value: Bricks-Lizard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+--- !u!4 &2360040419616339887 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5647817425519606725, guid: 1760aa0774074bd4a86f8c5a994fd9a0, type: 3}
+  m_PrefabInstance: {fileID: 7971820248792878186}
+  m_PrefabAsset: {fileID: 0}
