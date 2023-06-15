@@ -66,6 +66,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
             m_OnGrounded = true;
             transform.SetParent(collision.transform.root);
             OnCollision?.Invoke(this, collision);
+            SFXPlayer.Instance.PlaySFX(SfxType.GroundCollision);
         }
     }
 }

@@ -7,21 +7,15 @@ using UnityEngine.Audio;
 [RequireComponent(typeof(AudioSource))]
 public class SFXManager : MonoBehaviour
 {
-	public bool isPlayer;
-
 	AudioSource audioSource;
 	public AudioClip[] clips;
-	public string type;
 	List<AudioSource> sources;
 	[Range(0, 1)] public float chance = 1;
 
-	[HideInInspector] public bool canPlayHappy;
-
 	private void Awake()
 	{
-		audioSource = gameObject.GetComponent<AudioSource>();
+		audioSource = GetComponent<AudioSource>();
 		sources = new List<AudioSource>();
-		canPlayHappy = true;
 	}
 
 	[ContextMenu("RemoveAllAudioSource")]
@@ -37,7 +31,6 @@ public class SFXManager : MonoBehaviour
 	[ExecuteAlways]
 	public void Update()
 	{
-
 		if (sources != null)
 		{
 			for (int i = sources.Count - 1; i >= 0; i--)
@@ -66,9 +59,8 @@ public class SFXManager : MonoBehaviour
 	{
 		if (useChance && UnityEngine.Random.Range(0f, 1f) > chance)
 			return;
-
-		else
-			PlaySoundEffect(random, loop, hasRandomPitch);
+		
+		PlaySoundEffect(random, loop, hasRandomPitch);
 	}
 
 
@@ -85,28 +77,7 @@ public class SFXManager : MonoBehaviour
 		PlaySoundEffect(-1, loop, pitch);
 
 	}
-
-	//public void PlayMoveSFX()
-	//{
-	//	if (isPlayer && GameManager.instance.player.isAlive)
-	//		PlaySoundEffect(0, false);
-	//}
-	public void PlayPlayerSFX(bool loop = false)
-	{
-		if (isPlayer)
-			PlaySoundEffect(-1, loop, false);
-		else
-			PlaySoundEffect(-1, loop, true);
-	}
-
 	
-	public void PlayHappySFX()
-	{
-		if (isPlayer)
-			return;
-		if(canPlayHappy)
-			PlaySoundEffect(-1, false, true);
-	}
 	/// <summary>
 	/// 
 	/// </summary>
@@ -126,16 +97,6 @@ public class SFXManager : MonoBehaviour
 	{
 		if (sources.Count > 0)
 		{
-			/*foreach (var item in sources)
-			{
-				if (item == null)
-					continue;
-				if (item.clip == clips[random])
-				{
-					sources.Remove(item);
-					Destroy(item);
-				}
-			}*/
 			for (int i = sources.Count - 1; i >= 0; i--)
 			{
 				if (sources[i] == null)
@@ -153,25 +114,13 @@ public class SFXManager : MonoBehaviour
     {
 		if (sources.Count > 0)
 		{
-			/*foreach (var item in sources)
-			{
-				if (item == null)
-					continue;
-				else
-				{
-					sources.Remove(item);
-					Destroy(item);
-				}
-			}*/
 			for (int i = sources.Count - 1; i >= 0; i--)
 			{
 				if (sources[i] == null)
 					continue;
-				else
-				{
-					Destroy(sources[i]);
-					sources.RemoveAt(i);
-				}
+				
+				Destroy(sources[i]);
+				sources.RemoveAt(i);
 			}
 		}
 	}
