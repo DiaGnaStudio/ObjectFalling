@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ff842630219f3b341a44aaa1835394f5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.9831783, g: 0.8649763, b: 0.4082462, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &397704805
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6580661581391226819, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_Name
+      value: Back Envirment
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.38268548
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.92387867
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580661581391226828, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ff5179b6439caf4d904e5077e0a1544, type: 3}
 --- !u!1 &410516314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 512064484185311057, guid: 06e8cfc494fba38469cb6e4d84d950ba, type: 3}
@@ -175,14 +232,14 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -320,6 +377,10 @@ PrefabInstance:
     - target: {fileID: 2541902502402407368, guid: c0f9e778c9f596343a3d6805de1034fa, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2541902502402407370, guid: c0f9e778c9f596343a3d6805de1034fa, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2541902502402407373, guid: c0f9e778c9f596343a3d6805de1034fa, type: 3}
       propertyPath: m_RootOrder
