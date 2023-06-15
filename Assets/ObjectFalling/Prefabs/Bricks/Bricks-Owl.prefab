@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5761024703130383710, guid: 55b01d5bc08037242b9f583f0f98a791, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ea2948bfb84e5904a82314c59134a507, type: 2}
     - target: {fileID: 7808474700783398283, guid: 55b01d5bc08037242b9f583f0f98a791, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -55,7 +59,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bricks-Owl
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6251626245194090758, guid: 55b01d5bc08037242b9f583f0f98a791, type: 3}
+    - {fileID: 4077444546876298158, guid: 55b01d5bc08037242b9f583f0f98a791, type: 3}
+    - {fileID: -3996024699135118201, guid: 55b01d5bc08037242b9f583f0f98a791, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 55b01d5bc08037242b9f583f0f98a791, type: 3}
 --- !u!4 &7502649957385032118 stripped
 Transform:
