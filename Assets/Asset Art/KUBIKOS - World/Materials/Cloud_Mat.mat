@@ -4,13 +4,15 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Cloud_Mat
   m_Shader: {fileID: 4800000, guid: 36b3cd32ccf658445a39a541bb6a1e6a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -98,7 +100,7 @@ Material:
     - _B: 1
     - _BaseMetallic: 0
     - _BaseOcclusion: 0
-    - _BaseSmoothness: 0.547
+    - _BaseSmoothness: 0
     - _Brightness: 1
     - _CarMetallic: 0.5049318
     - _CarSmoothness: 0
@@ -143,3 +145,4 @@ Material:
     - _FlakesColor1: {r: 0.7794118, g: 0.9361055, b: 1, a: 0}
     - _FlakesColor2: {r: 0.74264705, g: 0.89350915, b: 1, a: 0}
     - _Offset1: {r: 1.2, g: 6.53, b: -6.86, a: 0}
+  m_BuildTextureStacks: []

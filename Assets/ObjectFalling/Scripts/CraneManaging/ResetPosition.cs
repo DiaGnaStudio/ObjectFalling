@@ -20,13 +20,13 @@ namespace DiaGna.ObjectFalling.CraneManaging
         private void OnEnable()
         {
             MoverEvent.OnPointerUp += Reseting;
-            MoverJoystick.OnPointerUp += Reseting;
+            MoverJoystick.OnPointerUpEvent += Reseting;
         }
 
         private void OnDisable()
         {
             MoverEvent.OnPointerUp -= Reseting;
-            MoverJoystick.OnPointerUp -= Reseting;
+            MoverJoystick.OnPointerUpEvent -= Reseting;
         }
 
         private void Reseting()

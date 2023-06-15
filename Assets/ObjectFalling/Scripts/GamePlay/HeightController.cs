@@ -1,54 +1,105 @@
+using DiaGna.Framework.Singletons;
 using DiaGna.ObjectFalling.BrickUtility;
 using DiaGna.ObjectFalling.GroundUtility;
+using DiaGna.ObjectFalling.LevelUtility;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DiaGna.ObjectFalling.Gameplay
 {
-    public class HeightController : MonoBehaviour
+    public class HeightController : ComponentSingleton<HeightController>
     {
-        [SerializeField] private float m_WinHight;
         private float m_CurrentHight;
-        private float m_LastHight;
+        public float m_WinHight;
 
-        [Header("Line")]
-        [SerializeField] private Material m_LineMaterial;
+        private List<Brick> m_CatchedBricks = new List<Brick>();
 
-        /// <summary>
-        /// Invoke when a brick fall down and ground rotating is down.
-        /// <para></para>
-        /// <b>Parameters:</b> returns true if the bricks hight reached to the win hight.
-        /// </summary>
-        public static event Action<bool> OnReached;
-        public static event Action<float> OnChangeHeight;
+        public bool IsWin => m_CurrentHight >= m_WinHight;
 
-        private void Awake()
-        {
-            CreateFinishLine();
-        }
+        public event Action<float> OnChangeHeight;
 
         private void OnEnable()
         {
-            Ground.Instance.OnRotated += CheckBricksHeight;
+            Ground.Instance.OnRotated += AddBrick;
+            LevelLoader.Instance.OnLoadLevel += SetHeight;
         }
 
         private void OnDisable()
         {
             if (Ground.IsAlive)
             {
-                Ground.Instance.OnRotated -= CheckBricksHeight;
+                Ground.Instance.OnRotated -= AddBrick;
+            }
+
+            if (LevelLoader.IsAlive)
+            {
+                LevelLoader.Instance.OnLoadLevel -= SetHeight;
             }
         }
 
-        private void CheckBricksHeight(Brick brick)
+        private void SetHeight(LevelData data)
         {
-            m_CurrentHight = brick.GetBrickHight();
+            m_WinHight = data.WinHeight;
+        }
 
-            OnChangeHeight?.Invoke(m_CurrentHight);
+        private void AddBrick(Brick brick)
+        {
+            m_CatchedBricks.Add(brick);
+        }
 
-            bool isReached = m_CurrentHight >= m_WinHight;
 
-            OnReached?.Invoke(isReached);
+        //private void CheckBricksHeight(Brick brick)
+        //{
+        //    var lastHeight = brick.GetBrickHight();
+        //    if (lastHeight > m_CurrentHight)
+        //    {
+        //        m_CurrentHight = lastHeight;
+
+        //        OnChangeHeight?.Invoke(m_CurrentHight);
+
+        //        if (IsWin)
+        //        {
+        //            GlobalEvent.FinishGame(m_CurrentHight >= WinHight);
+        //        }
+        //    }
+        //}
+
+        private void Update()
+        {
+            var stableCount = 0;
+            foreach(var brist in m_CatchedBricks)
+            {
+                if (brist.IsStable)
+                {
+                    stableCount++;
+                }
+            }
+
+            if(stableCount == m_CatchedBricks.Count)
+            {
+                float maxHieght = 0;
+                foreach (var bricck in m_CatchedBricks)
+                {
+                    var height = bricck.GetBrickHight();
+                    if (height > maxHieght)
+                    {
+                        maxHieght = height;
+                    }
+                }
+
+                if (m_CurrentHight != maxHieght)
+                {
+                    m_CurrentHight = maxHieght;
+                    Debug.Log(m_CurrentHight);
+                    OnChangeHeight?.Invoke(m_CurrentHight);
+
+                    if (IsWin)
+                    {
+                        GlobalEvent.FinishGame(true);
+                    }
+                }
+            }
         }
 
         private void OnDrawGizmos()
@@ -60,15 +111,6 @@ namespace DiaGna.ObjectFalling.Gameplay
             UnityEditor.Handles.color = Color.green;
             UnityEditor.Handles.DrawWireDisc(hightPosition, Vector3.up, 5);
 #endif
-        }
-
-        private void CreateFinishLine()
-        {
-            var line = transform.GetChild(0);
-            line.SetParent(transform);
-            line.localPosition = new Vector3(3, m_WinHight / 2, 0);
-            line.localRotation = Quaternion.Euler(0, 45, 0);
-            line.localScale = new Vector3(0.5f, m_WinHight, 0.5f);
         }
     }
 }

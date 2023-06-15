@@ -11,9 +11,14 @@ namespace DiaGna.ObjectFalling.BrickUtility
     [RequireComponent(typeof(Collider))]
     public class Brick : MonoBehaviour
     {
+        [SerializeField,Min(0)] private float m_Height;
+
         private bool m_OnGrounded;
 
         private Rigidbody m_rigidbody;
+
+        [SerializeField] private LayerMask m_GroundLayer;
+        float m_DistanceToGround = 0;
 
         /// <summary>
         /// Reference of brick's rigidbody.
@@ -24,12 +29,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
         /// Invokes when this brick collided with other object.
         /// </summary>
         public event Action<Brick, Collision> OnCollision;
-
-        private void Awake()
-        {
-            m_rigidbody = GetComponent<Rigidbody>();
-            SetAngularDrag(10f);
-        }
 
         private void OnEnable()
         {
@@ -44,6 +43,12 @@ namespace DiaGna.ObjectFalling.BrickUtility
             }
         }
 
+        public void Active()
+        {
+            m_rigidbody = GetComponent<Rigidbody>();
+            SetAngularDrag(10f);
+        }
+
         private void OnDrop(Brick brick)
         {
             SetAngularDrag(0.05f);
@@ -56,17 +61,41 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         public float GetBrickHight()
         {
-            var worldPosition = transform.TransformPoint(Vector3.zero);
-            return worldPosition.y;
+            if (Physics.Raycast(transform.position, -Vector3.up, out hitInfo, Mathf.Infinity, m_GroundLayer))
+            {
+                m_DistanceToGround = hitInfo.distance;
+            }
+
+            return Mathf.Ceil(m_DistanceToGround + m_Height);
         }
+        RaycastHit hitInfo;
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (Physics.Raycast(transform.position, -Vector3.up, out hitInfo, Mathf.Infinity, m_GroundLayer))
+            {
+                m_DistanceToGround = hitInfo.distance;
+            }
+
             if (m_OnGrounded) return;
             m_OnGrounded = true;
             transform.SetParent(collision.transform.root);
             OnCollision?.Invoke(this, collision);
             SFXPlayer.Instance.PlaySFX(SfxType.GroundCollision);
+        }
+
+        public bool IsStable { get; private set; }
+
+        private void Update()
+        {
+            if(m_rigidbody.velocity.magnitude < 0.5f)
+            {
+                IsStable = true;
+            }
+            else
+            {
+                IsStable = false;
+            }
         }
     }
 }

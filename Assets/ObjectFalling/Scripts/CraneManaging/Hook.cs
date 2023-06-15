@@ -13,35 +13,34 @@ namespace DiaGna.ObjectFalling.CraneManaging
         private Brick m_CurrentBrick;
 
         [Header("Components")]
-        private Joint m_Joint;
+        [SerializeField] private Joint m_Joint;
 
         /// <summary>
         /// Invokes when an object start falling.
         /// </summary>
         public event Action<Brick> OnDrop;
-
-        private void Awake()
-        {
-            m_Joint = GetComponent<Joint>();
-        }
+        public event Action<Brick> OnCatch;
 
         private void OnEnable()
         {
             MoverEvent.OnPointerUp += DropObject;
-            MoverJoystick.OnPointerUp += DropObject;
+            MoverJoystick.OnPointerUpEvent += DropObject;
         }
 
         private void OnDisable()
         {
             MoverEvent.OnPointerUp -= DropObject;
-            MoverJoystick.OnPointerUp -= DropObject;
+            MoverJoystick.OnPointerUpEvent -= DropObject;
         }
 
         public void AssignObject(Brick currentBrick)
         {
-            currentBrick.transform.position = new Vector3(0, transform.localPosition.y -m_Offset, 0);
+            currentBrick.transform.rotation = Quaternion.Euler(0, 180, 0);
+            currentBrick.transform.position = new Vector3(0, m_Joint.transform.localPosition.y -m_Offset, 0);
             m_Joint.connectedBody = currentBrick.Rigidbody;
             m_CurrentBrick = currentBrick;
+
+            OnCatch?.Invoke(currentBrick);
         }
 
         private void DropObject()

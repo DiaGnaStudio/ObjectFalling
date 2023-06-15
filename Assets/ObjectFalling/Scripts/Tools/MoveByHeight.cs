@@ -1,6 +1,7 @@
 using DiaGna.ObjectFalling.Gameplay;
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 namespace DiaGna.ObjectFalling.GroundUtility
 {
@@ -10,24 +11,32 @@ namespace DiaGna.ObjectFalling.GroundUtility
     public class MoveByHeight : MonoBehaviour
     {
         [SerializeField] private float m_ViewHeight;
-        [SerializeField] private float m_moveDownDuration;
+        [SerializeField] private float m_Duration;
         private float m_lastHeight;
+        private bool m_hasLastMove;
 
         private void OnEnable()
         {
-            HeightController.OnChangeHeight += Check;
+            HeightController.Instance.OnChangeHeight += Check;
         }
 
         private void OnDisable()
         {
-            HeightController.OnChangeHeight -= Check;
+            if (HeightController.IsAlive)
+            {
+                HeightController.Instance.OnChangeHeight -= Check;
+            }
         }
-
+       
         private void Check(float currentHight)
         {
-            if (currentHight >= m_ViewHeight)
+            if (currentHight > m_ViewHeight)
             {
-                MoveDown(currentHight);
+                MoveDown(currentHight - m_lastHeight);
+            }
+            else if(m_hasLastMove && currentHight < m_lastHeight)
+            {
+                MoveDown(-(m_lastHeight - currentHight));
             }
 
             m_lastHeight = currentHight;
@@ -35,22 +44,8 @@ namespace DiaGna.ObjectFalling.GroundUtility
 
         private void MoveDown(float newHeight)
         {
-            StartCoroutine(MoveDownCoroutine(newHeight));
-        }
-
-        IEnumerator MoveDownCoroutine(float newHeight)
-        {
-            float moveAmount = newHeight - m_lastHeight;
-            float movePerFrame = moveAmount / (m_moveDownDuration / Time.deltaTime);
-
-
-            float currentMoveAmount = 0f;
-            while (currentMoveAmount < moveAmount)
-            {
-                transform.Translate(0f, movePerFrame, 0f);
-                currentMoveAmount += movePerFrame;
-                yield return null;
-            }
+            transform.DOMoveY(transform.position.y + newHeight, m_Duration);
+            m_hasLastMove = true;
         }
     }
 }

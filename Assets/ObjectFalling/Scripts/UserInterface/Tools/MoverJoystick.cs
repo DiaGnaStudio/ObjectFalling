@@ -9,10 +9,10 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
     [RequireComponent(typeof(Joystick))]
     public class MoverJoystick : MonoBehaviour
     {
-        private Joystick m_joystick;
+        private static Joystick m_joystick;
 
         public static event Action<Vector2> OnDrag;
-        public static event Action OnPointerUp;
+        public static event Action OnPointerUpEvent;
 
         private void Awake()
         {
@@ -27,6 +27,12 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
         private void OnDisable()
         {
             m_joystick.OnPointerUpEvent -= OnPointerUp;
+        }
+
+
+        private void OnPointerUp()
+        {
+            OnPointerUpEvent?.Invoke();
         }
 
         private void FixedUpdate()

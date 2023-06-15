@@ -1,42 +1,62 @@
+using DiaGna.Framework.Singletons;
+using DiaGna.ObjectFalling.Gameplay;
+using DiaGna.ObjectFalling.ProfileUtility;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DiaGna.ObjectFalling
+namespace DiaGna.ObjectFalling.LevelUtility
 {
-    public class LevelLoader : MonoBehaviour
+    public class LevelLoader : ComponentSingleton<LevelLoader>
     {
-        public static LevelLoader Instance { get; private set; }
-
         [SerializeField] private List<LevelDataAsset> levels = new List<LevelDataAsset>();
 
-        public event Action OnLoadLevel;
+        public event Action<LevelData> OnLoadLevel;
 
-        private void Awake()
+        public bool IsLevelActive { get; private set; }
+        public LevelData ActiveLevel { get; private set; }
+
+        private void OnEnable()
         {
-            if (!Instance)
-                Instance = this;
-            else
-                Destroy(gameObject);
+            GlobalEvent.OnStartGame += LoadLevel;
+            GlobalEvent.OnFinishGame += FinishActiveLevel;
         }
 
-        public void LoadProfile(ProfileData profileData)
+        private void LoadLevel()
         {
-            foreach (LevelDataAsset level in levels)
+            if (IsLevelActive) return;
+            IsLevelActive = true;
+
+            var newLevel = GetLevel(ProfileController.Instance.Profile.CurrentLevelIndex);
+            ActiveLevel = newLevel;
+            OnLoadLevel?.Invoke(newLevel);
+        }
+
+        private void OnDisable()
+        {
+            GlobalEvent.OnStartGame -= LoadLevel;
+            GlobalEvent.OnFinishGame -= FinishActiveLevel;
+        }
+
+        private void FinishActiveLevel(bool isWin)
+        {
+            IsLevelActive = false;
+            ActiveLevel = null;
+        }
+
+        private LevelData GetLevel(int levelIndex)
+        {
+            for (int i = 0; i < levels.Count; i++)
             {
-                bool isCurrentLevel = level.data.LevelIndex == profileData.CurrentLevel;
+                LevelDataAsset level = levels[i];
+                bool isCurrentLevel = i == (levelIndex % levels.Count);
                 if (isCurrentLevel)
                 {
-                    LoadLevel(level.data);
-                    break;
+                    return level.data;
                 }
             }
+            return null;
         }
 
-        private void LoadLevel(LevelData levelData)
-        {
-            OnLoadLevel?.Invoke();
-        }
     }
 }
