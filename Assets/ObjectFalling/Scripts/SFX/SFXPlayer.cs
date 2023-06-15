@@ -23,10 +23,15 @@ namespace DiaGna.ObjectFalling
         private void OnEnable()
         {
             //MoverJoystick.OnDrag += PlayCraveMover;
-            MoverJoystick.OnPointerUp += PlayDropCube;
+            MoverJoystick.OnPointerUpEvent += PlayDropCube;
             //MoverJoystick.OnPointerUp += StopCraveMover;
         }
-        
+
+        private void OnDisable()
+        {
+            MoverJoystick.OnPointerUpEvent -= PlayDropCube;
+        }
+
         private void Awake()
         {
             if (!Instance)
