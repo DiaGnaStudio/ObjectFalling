@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "com.dgs.attribute": {
-      "version": "file:Attribute",
+      "version": "https://github.com/DiaGnaStudio/Attribute.git",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "067537801b5c6c1310894d80f8f15955f3c563c7"
     },
     "com.dgs.framework": {
       "version": "file:com.dgs.framework",
@@ -13,12 +14,13 @@
       "dependencies": {}
     },
     "com.dgs.userinterface": {
-      "version": "file:UserInterface",
+      "version": "https://github.com/DiaGnaStudio/UserInterface.git",
       "depth": 0,
-      "source": "embedded",
+      "source": "git",
       "dependencies": {
         "com.dgs.attribute": "0.1.0"
-      }
+      },
+      "hash": "065e43ab47c03ec31c6568c0cd0930eeef80bf72"
     },
     "com.unity.cinemachine": {
       "version": "2.6.17",
