@@ -45,7 +45,7 @@ namespace DiaGna.ObjectFalling.CraneManaging
         {
             float horizontal = vector.x * m_Speed * Time.deltaTime;
             float vertical = vector.y * m_Speed * Time.deltaTime;
-
+            
             var currentPostion = transform.position;
             transform.position = new Vector3(m_HorizontalLimit.GetValue(currentPostion.x + horizontal), m_PremitiveHight, m_VerticalLimit.GetValue(currentPostion.z + vertical));
         }

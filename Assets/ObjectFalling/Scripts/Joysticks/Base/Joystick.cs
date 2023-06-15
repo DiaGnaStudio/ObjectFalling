@@ -141,9 +141,9 @@ namespace DiaGna.ObjectFalling
 
         public virtual void OnPointerUp(PointerEventData eventData)
         {
+            OnPointerUpEvent?.Invoke();
             input = Vector2.zero;
             handle.anchoredPosition = Vector2.zero;
-            OnPointerUpEvent?.Invoke();
         }
 
         protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)
