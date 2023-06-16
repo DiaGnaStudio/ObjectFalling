@@ -66,6 +66,9 @@ namespace DiaGna.ObjectFalling.GroundUtility
 
         IEnumerator RotateCube()
         {
+            yield return new WaitForSeconds(3);
+
+
             float rotationPerFrame = m_rotationAmount / (m_roteteDuration / Time.deltaTime);
 
             float rotatedAmount = 0f;
