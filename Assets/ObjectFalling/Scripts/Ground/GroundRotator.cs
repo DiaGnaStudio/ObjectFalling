@@ -15,12 +15,12 @@ namespace DiaGna.ObjectFalling.GroundUtility
         [SerializeField] private float m_rotationAmount = 90.0f;
         [SerializeField] private float m_roteteDuration;
 
-        private readonly List<Brick> m_BrickList = new List<Brick>();
+        private readonly List<IBrick> m_BrickList = new List<IBrick>();
 
         /// <summary>
         /// Invokes when the ground rotation finished.
         /// </summary>
-        public event Action<Brick> OnRotated;
+        public event Action<IBrick> OnRotated;
 
         private void OnEnable()
         {
@@ -35,21 +35,21 @@ namespace DiaGna.ObjectFalling.GroundUtility
             }
         }
 
-        private void OnDropBrick(Brick brick)
+        private void OnDropBrick(IBrick brick)
         {
-            brick.OnCollision += ConnectFallingObject;
+            brick.OnCollided += ConnectFallingObject;
         }
 
-        private void ConnectFallingObject(Brick brick, Collision collision)
+        private void ConnectFallingObject(IBrick brick)
         {
-            brick.OnCollision -= ConnectFallingObject;
+            brick.OnCollided -= ConnectFallingObject;
 
             AddBrick(brick);
 
             RotateGround();
         }
 
-        private void AddBrick(Brick brick)
+        private void AddBrick(IBrick brick)
         {
             if (!m_BrickList.Contains(brick))
             {

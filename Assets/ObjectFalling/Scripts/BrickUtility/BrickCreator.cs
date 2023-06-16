@@ -13,11 +13,11 @@ namespace DiaGna.ObjectFalling.BrickUtility
         [SerializeField, Min(0)] private float m_Delay = 1;
         private bool m_CanCreate;
 
-        private List<Brick> m_BrickPrefabs = new List<Brick>();
+        private List<IBrick> m_BrickPrefabs = new List<IBrick>();
 
         private Coroutine m_CreatingCoroutine;
 
-        public void AddPrefab(Brick prefab)
+        public void AddPrefab(IBrick prefab)
         {
             if (m_BrickPrefabs.Contains(prefab)) return;
             m_BrickPrefabs.Add(prefab);
@@ -58,7 +58,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
             }
         }
 
-        private void CheckCrating(Brick brick)
+        private void CheckCrating(IBrick brick)
         {
             Creating();
         }
@@ -74,21 +74,23 @@ namespace DiaGna.ObjectFalling.BrickUtility
         {
             yield return new WaitForSeconds(m_Delay);
 
-            Brick brick = GetBrick();
+            IBrick brick = GetBrick();
             Crane.Instance.Component.Hook.AssignObject(brick);
         }
 
-        private Brick GetBrick()
+        private IBrick GetBrick()
         {
-            Brick brick;
+            GameObject brick;
             if (m_BrickPrefabs.Count == 0)
             {
                 var prefab = GetFromResource();
-                brick = Instantiate(prefab);
+                brick = Instantiate(prefab.BrickObject);
+                brick.transform.rotation = Quaternion.Euler(0, 45, 0);
             }
             else
             {
-                brick = Instantiate(m_BrickPrefabs[Random.Range(0, m_BrickPrefabs.Count)]);
+                brick = Instantiate(m_BrickPrefabs[Random.Range(0, m_BrickPrefabs.Count)].BrickObject);
+                brick.transform.rotation = Quaternion.Euler(0, 45, 0);
             }
 
             if (brick == null)
@@ -96,11 +98,11 @@ namespace DiaGna.ObjectFalling.BrickUtility
                 Debug.LogError("No brick avaialbe!");
             }
 
-            brick.Active();
-            return brick;
+            var brickComponent = brick.GetComponent<IBrick>();
+            return brickComponent;
         }
 
-        private Brick GetFromResource()
+        private IBrick GetFromResource()
         {
             if (LevelLoader.Instance.IsLevelActive)
             {

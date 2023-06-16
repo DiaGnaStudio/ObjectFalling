@@ -43,7 +43,7 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
             m_CanCreate = false;
         }
 
-        private void CheckCrating(Brick brick)
+        private void CheckCrating(IBrick brick)
         {
             if (!m_CanCreate) return;
 

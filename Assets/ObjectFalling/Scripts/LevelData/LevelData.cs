@@ -13,7 +13,7 @@ namespace DiaGna.ObjectFalling
         [SerializeField, Min(0)] private int m_levelIndex;
         [SerializeField, Min(0)] private float m_winHeight;
         [SerializeField, Min(0)] private int m_brickCount;
-        [SerializeField] private List<Brick> m_brickPrefabs = new List<Brick>();
+        [SerializeField] private List<GameObject> m_brickPrefabs;
 
         public int LevelIndex => m_levelIndex;
 
@@ -28,10 +28,10 @@ namespace DiaGna.ObjectFalling
             return false;
         }
 
-        public Brick GetRandomBricks()
+        public IBrick GetRandomBricks()
         {
             var randomIndex = Random.Range(0, m_brickPrefabs.Count);
-            Brick brick = m_brickPrefabs[randomIndex];
+            IBrick brick = m_brickPrefabs[randomIndex].GetComponent<IBrick>();
 
             return brick;
         }

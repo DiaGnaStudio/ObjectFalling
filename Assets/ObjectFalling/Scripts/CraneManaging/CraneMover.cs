@@ -12,6 +12,8 @@ namespace DiaGna.ObjectFalling.CraneManaging
 
         private float m_PremitiveHight;
 
+        public Vector3 finalPosition;
+
         [Serializable]
         private struct Limit
         {
@@ -27,6 +29,7 @@ namespace DiaGna.ObjectFalling.CraneManaging
         private void Start()
         {
             m_PremitiveHight = transform.position.y;
+            finalPosition = transform.position;
         }
 
         private void OnEnable()
@@ -41,13 +44,23 @@ namespace DiaGna.ObjectFalling.CraneManaging
             MoverJoystick.OnDrag -= MoveHook;
         }
 
+
+        
         private void MoveHook(Vector2 vector)
         {
             float horizontal = vector.x * m_Speed * Time.deltaTime;
             float vertical = vector.y * m_Speed * Time.deltaTime;
+            
+            //var currentPostion = transform.position;
+            //transform.position = new Vector3(m_HorizontalLimit.GetValue(currentPostion.x + horizontal), m_PremitiveHight, m_VerticalLimit.GetValue(currentPostion.z + vertical));
 
-            var currentPostion = transform.position;
-            transform.position = new Vector3(m_HorizontalLimit.GetValue(currentPostion.x + horizontal), m_PremitiveHight, m_VerticalLimit.GetValue(currentPostion.z + vertical));
+            var currentPos = finalPosition;
+            finalPosition = new Vector3(m_HorizontalLimit.GetValue(currentPos.x + horizontal), m_PremitiveHight, m_VerticalLimit.GetValue(currentPos.z + vertical));
+
+            if (Mathf.Abs(finalPosition.x - transform.position.x) >= 1)
+            {
+                transform.position = Vector3Int.FloorToInt(finalPosition);
+            }
         }
     }
 }

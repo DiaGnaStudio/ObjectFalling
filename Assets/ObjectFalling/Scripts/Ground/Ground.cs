@@ -18,7 +18,7 @@ namespace DiaGna.ObjectFalling.GroundUtility
         /// <summary>
         /// <inheritdoc cref="GroundRotator.OnRotated"/>
         /// </summary>
-        public event Action<Brick> OnRotated
+        public event Action<IBrick> OnRotated
         {
             add => m_groundRotator.OnRotated += value;
             remove => m_groundRotator.OnRotated -= value;

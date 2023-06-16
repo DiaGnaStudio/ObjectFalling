@@ -13,7 +13,7 @@ namespace DiaGna.ObjectFalling.Gameplay
         private float m_CurrentHight;
         public float m_WinHight;
 
-        private List<Brick> m_CatchedBricks = new List<Brick>();
+        private List<IBrick> m_CatchedBricks = new List<IBrick>();
 
         public bool IsWin => m_CurrentHight >= m_WinHight;
 
@@ -43,7 +43,7 @@ namespace DiaGna.ObjectFalling.Gameplay
             m_WinHight = data.WinHeight;
         }
 
-        private void AddBrick(Brick brick)
+        private void AddBrick(IBrick brick)
         {
             m_CatchedBricks.Add(brick);
         }
@@ -81,7 +81,7 @@ namespace DiaGna.ObjectFalling.Gameplay
                 float maxHieght = 0;
                 foreach (var bricck in m_CatchedBricks)
                 {
-                    var height = bricck.GetBrickHight();
+                    var height = bricck.GetDistanceToGround();
                     if (height > maxHieght)
                     {
                         maxHieght = height;

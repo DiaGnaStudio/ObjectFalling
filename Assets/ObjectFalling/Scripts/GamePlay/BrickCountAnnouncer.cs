@@ -17,11 +17,11 @@ namespace DiaGna.ObjectFalling.Gameplay
         /// </summary>
         public static event Action<int, int> OnIncrease;
 
-        private List<Brick> AvailableBricks;
+        private List<IBrick> AvailableBricks;
 
         private void Awake()
         {
-            AvailableBricks = new List<Brick>();
+            AvailableBricks = new List<IBrick>();
         }
 
         private void OnEnable()
@@ -63,7 +63,7 @@ namespace DiaGna.ObjectFalling.Gameplay
             Count = data.BrickCount;
         }
 
-        private void AddBrick(Brick brick)
+        private void AddBrick(IBrick brick)
         {
             AvailableBricks.Add(brick);
 
@@ -80,7 +80,7 @@ namespace DiaGna.ObjectFalling.Gameplay
         {
             foreach (var brick in AvailableBricks)
             {
-                Destroy(brick.gameObject);
+                Destroy(brick.BrickObject);
             }
         }
     }
