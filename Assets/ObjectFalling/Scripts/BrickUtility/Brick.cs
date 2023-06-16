@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace DiaGna.ObjectFalling.BrickUtility
 {
+
     /// <summary>
     /// A class to provides a brick
     /// </summary>
@@ -24,6 +25,8 @@ namespace DiaGna.ObjectFalling.BrickUtility
         /// Reference of brick's rigidbody.
         /// </summary>
         public Rigidbody Rigidbody => m_rigidbody;
+
+        public bool IsStable { get; private set; }
 
         /// <summary>
         /// Invokes when this brick collided with other object.
@@ -61,18 +64,17 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         public float GetBrickHight()
         {
-            if (Physics.Raycast(transform.position, -Vector3.up, out hitInfo, Mathf.Infinity, m_GroundLayer))
+            if (Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hitInfo, Mathf.Infinity, m_GroundLayer))
             {
                 m_DistanceToGround = hitInfo.distance;
             }
 
             return Mathf.Ceil(m_DistanceToGround + m_Height);
         }
-        RaycastHit hitInfo;
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (Physics.Raycast(transform.position, -Vector3.up, out hitInfo, Mathf.Infinity, m_GroundLayer))
+            if (Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hitInfo, Mathf.Infinity, m_GroundLayer))
             {
                 m_DistanceToGround = hitInfo.distance;
             }
@@ -82,8 +84,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
             transform.SetParent(collision.transform.root);
             OnCollision?.Invoke(this, collision);
         }
-
-        public bool IsStable { get; private set; }
 
         private void Update()
         {

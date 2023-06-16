@@ -1,25 +1,21 @@
+using DiaGna.AudioPlayer.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DiaGna.ObjectFalling
 {
-    [RequireComponent(typeof(AudioSource))]
-    public class OnClickSound : MonoBehaviour
+    public class OnClickSound : BaseAudioPlayer
     {
-        [SerializeField] private AudioClip m_Sound;
-        private AudioSource m_Source;
         private Button[] m_Button;
 
-        private void Awake()
+        protected override void OnLoadPlayer()
         {
-            m_Source = GetComponent<AudioSource>();
             m_Button = GetComponentsInChildren<Button>();
 
-            m_Source.playOnAwake = false;
-            m_Source.clip = m_Sound;
+            InternalSource.playOnAwake = false;
         }
 
-        private void OnEnable()
+        protected override void OnEnablePlayer()
         {
             foreach (var button in m_Button)
             {
@@ -27,17 +23,12 @@ namespace DiaGna.ObjectFalling
             }
         }
 
-        private void OnDisable()
+        protected override void OnDisablePlayer()
         {
             foreach (var button in m_Button)
             {
                 button.onClick.AddListener(Play);
             }
-        }
-
-        private void Play()
-        {
-            m_Source.Play();
         }
     }
 }

@@ -1,10 +1,7 @@
 {
-    "name": "DiaGna.ObjectFalling",
-    "rootNamespace": "DiaGna.ObjectFalling",
-    "references": [
-        "GUID:7a9351d34e995a14f9eeb4edaa7f7811",
-        "GUID:b5f9e71ad367f8244ac9a52fa534e6bf"
-    ],
+    "name": "DiaGna.AudioPlayer",
+    "rootNamespace": "DiaGna.AudioPlayer",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
