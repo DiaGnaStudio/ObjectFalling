@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-
+#if UNITY_EDITOR
 namespace DiaGna.ObjectFalling
 {
     [CustomEditor(typeof(Joystick), true)]
@@ -66,3 +66,4 @@ namespace DiaGna.ObjectFalling
         }
     }
 }
+#endif

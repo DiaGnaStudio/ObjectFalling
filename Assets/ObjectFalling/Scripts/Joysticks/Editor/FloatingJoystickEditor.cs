@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 
+#if UNITY_EDITOR
 namespace DiaGna.ObjectFalling
 {
     [CustomEditor(typeof(FloatingJoystick))]
@@ -23,3 +24,4 @@ namespace DiaGna.ObjectFalling
         }
     }
 }
+#endif
