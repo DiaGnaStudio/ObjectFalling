@@ -600,6 +600,7 @@ MonoBehaviour:
   m_VerticalLimit:
     m_Min: 0
     m_Max: 0
+  finalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1438213793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1216,10 +1217,6 @@ PrefabInstance:
     - target: {fileID: 4801985994232648169, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
       propertyPath: m_AngularZMotion
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4801985994232648169, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4801985994232648169, guid: 231a8c9b78b91bf4d998a5808078496e, type: 3}
       propertyPath: m_ConnectedMassScale

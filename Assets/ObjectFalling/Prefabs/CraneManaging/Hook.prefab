@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2be6324ee4f294fab5060f49082689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Offset: 2
+  m_Offset: 4
+  m_Joint: {fileID: 0}
 --- !u!54 &4801985994232648174
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74,7 +75,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 2.0500002, z: 0}
+  m_ConnectedAnchor: {x: 0, y: 3.5, z: 0}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 0}
   m_XMotion: 0
