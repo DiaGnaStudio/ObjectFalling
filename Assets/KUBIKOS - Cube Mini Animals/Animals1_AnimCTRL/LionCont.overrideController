@@ -3,8 +3,9 @@
 --- !u!221 &22100000
 AnimatorOverrideController:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: LionCont
   m_Controller: {fileID: 9100000, guid: 57bf079d37ba4dfa9d08024e126557fe, type: 2}
   m_Clips:
@@ -13,9 +14,9 @@ AnimatorOverrideController:
   - m_OriginalClip: {fileID: 7400012, guid: ecb900ca4b414eae9053afe2b45f3656, type: 3}
     m_OverrideClip: {fileID: 7400012, guid: bbfb6f7db0794cd6b22c04e08d2c2bbf, type: 3}
   - m_OriginalClip: {fileID: 7400002, guid: ecb900ca4b414eae9053afe2b45f3656, type: 3}
-    m_OverrideClip: {fileID: 7400000, guid: bbfb6f7db0794cd6b22c04e08d2c2bbf, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 9d097789fb2a05942a6b0f835a40b225, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: ecb900ca4b414eae9053afe2b45f3656, type: 3}
-    m_OverrideClip: {fileID: 7400004, guid: bbfb6f7db0794cd6b22c04e08d2c2bbf, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 8b5f1c82cfbe62b419c9cd55ef2f37ca, type: 2}
   - m_OriginalClip: {fileID: 7400008, guid: ecb900ca4b414eae9053afe2b45f3656, type: 3}
     m_OverrideClip: {fileID: 7400008, guid: bbfb6f7db0794cd6b22c04e08d2c2bbf, type: 3}
   - m_OriginalClip: {fileID: 7400014, guid: ecb900ca4b414eae9053afe2b45f3656, type: 3}
@@ -23,4 +24,4 @@ AnimatorOverrideController:
   - m_OriginalClip: {fileID: 7400006, guid: ecb900ca4b414eae9053afe2b45f3656, type: 3}
     m_OverrideClip: {fileID: 7400006, guid: bbfb6f7db0794cd6b22c04e08d2c2bbf, type: 3}
   - m_OriginalClip: {fileID: 7400004, guid: ecb900ca4b414eae9053afe2b45f3656, type: 3}
-    m_OverrideClip: {fileID: 7400002, guid: bbfb6f7db0794cd6b22c04e08d2c2bbf, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 1cd89f63a5592f44496493bc653d5b18, type: 2}

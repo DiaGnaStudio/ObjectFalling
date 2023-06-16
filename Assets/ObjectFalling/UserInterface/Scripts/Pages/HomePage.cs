@@ -8,7 +8,6 @@ namespace DiaGna.ObjectFalling.UserInterface
 {
     public class HomePage : UIPageBase
     {
-        public static event Action OnPageLoaded;
 
         [SerializeField] private Button m_PlayButton;
 
@@ -18,7 +17,7 @@ namespace DiaGna.ObjectFalling.UserInterface
 
         protected override void OnOpenPage()
         {
-            OnPageLoaded?.Invoke();
+            GlobalEvent.HomeOpened();
             m_PlayButton.onClick.AddListener(StartGame);
         }
 

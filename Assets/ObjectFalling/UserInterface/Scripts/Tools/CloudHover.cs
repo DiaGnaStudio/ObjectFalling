@@ -11,6 +11,8 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
         [SerializeField] private string m_RetunrHomePageParameter;
         [SerializeField] private string m_FinishParameter;
 
+        bool canPlay = false;//REMOVE THIS
+
         private void Awake()
         {
             m_Animator = GetComponent<Animator>();
@@ -20,14 +22,14 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
         {
             GlobalEvent.OnStartGame += Open;
             GlobalEvent.OnFinishGame += Stay;
-            HomePage.OnPageLoaded += RetunHome;
+            GlobalEvent.OnHome += RetunHome;
         }
 
         private void OnDisable()
         {
             GlobalEvent.OnStartGame -= Open;
             GlobalEvent.OnFinishGame -= Stay;
-            HomePage.OnPageLoaded -= RetunHome;
+            GlobalEvent.OnHome -= RetunHome;
         }
 
         private void Open()
@@ -42,6 +44,8 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
 
         private void RetunHome()
         {
+            if (!canPlay) return;
+            canPlay = true;
             m_Animator.SetTrigger(m_RetunrHomePageParameter);
         }
     }

@@ -8,6 +8,8 @@ namespace DiaGna.ObjectFalling.Gameplay
         public static event Action OnStartGame;
         public static event Action<bool> OnFinishGame;
 
+        public static event Action OnHome;
+
         public static bool IsWin { get; private set; }
 
         public static void StartGame()
@@ -19,6 +21,11 @@ namespace DiaGna.ObjectFalling.Gameplay
         {
             IsWin = isWin;
             OnFinishGame?.Invoke(isWin);
+        }
+
+        public static void HomeOpened()
+        {
+            OnHome?.Invoke();
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]

@@ -31,7 +31,7 @@ namespace DiaGna.AudioPlayer.Core
             OnDisablePlayer();
         }
 
-        public void Play()
+        protected void InternalPlay()
         {
             m_Source.Play();
         }

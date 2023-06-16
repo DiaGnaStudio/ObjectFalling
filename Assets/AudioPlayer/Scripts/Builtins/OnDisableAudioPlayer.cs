@@ -11,7 +11,7 @@ namespace DiaGna.AudioPlayer.Builtins
 
         protected override void OnDisablePlayer()
         {
-            Play();
+            InternalPlay();
         }
     }
 }

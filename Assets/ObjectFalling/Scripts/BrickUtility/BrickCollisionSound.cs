@@ -25,7 +25,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private void Play(Brick brick, Collision collision)
         {
-            Play();
+            InternalPlay();
         }
     }
 }

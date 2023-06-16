@@ -19,7 +19,7 @@ namespace DiaGna.ObjectFalling
         {
             foreach (var button in m_Button)
             {
-                button.onClick.AddListener(Play);
+                button.onClick.AddListener(InternalPlay);
             }
         }
 
@@ -27,7 +27,7 @@ namespace DiaGna.ObjectFalling
         {
             foreach (var button in m_Button)
             {
-                button.onClick.AddListener(Play);
+                button.onClick.AddListener(InternalPlay);
             }
         }
     }
