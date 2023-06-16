@@ -10,6 +10,7 @@ namespace DiaGna.ObjectFalling
 {
     public class BrickPrefabGenerator : MonoBehaviour
     {
+        [SerializeField] private LayerMask m_layer;
         public int brickCount;
         public List<GameObject> prefabs = new List<GameObject>();
 
@@ -38,6 +39,13 @@ namespace DiaGna.ObjectFalling
             {
                 var parentObj = new GameObject();
                 parentObj.name = item.name + "_" + brickCount.ToString();
+                var rb = parentObj.AddComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+
+                var brick = parentObj.AddComponent<BrickUtility.Brick>();
+                brick.SetGroundLayer(m_layer);
+                parentObj.AddComponent<AnimalBrick>();
+
                 instantiatedObjects.Add(parentObj);
 
                 for (int i = 0; i < brickCount; i++)

@@ -8,7 +8,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
     /// A class to provides a brick
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(Collider))]
     public class Brick : MonoBehaviour
     {
         [SerializeField,Min(0)] private float m_Height;
@@ -20,6 +19,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
         [SerializeField] private LayerMask m_GroundLayer;
         float m_DistanceToGround = 0;
 
+        public void SetGroundLayer(LayerMask layer) => m_GroundLayer = layer;
         /// <summary>
         /// Reference of brick's rigidbody.
         /// </summary>
@@ -52,6 +52,9 @@ namespace DiaGna.ObjectFalling.BrickUtility
         private void OnDrop(Brick brick)
         {
             SetAngularDrag(0.05f);
+
+            var animalBrick = gameObject.GetComponent<AnimalBrick>();
+            animalBrick.SetChildRbIsKinematic(false);
         }
 
         private void SetAngularDrag(float dragValue)
@@ -78,10 +81,14 @@ namespace DiaGna.ObjectFalling.BrickUtility
             }
 
             if (m_OnGrounded) return;
+
             m_OnGrounded = true;
             transform.SetParent(collision.transform.root);
             OnCollision?.Invoke(this, collision);
-            SFXPlayer.Instance.PlaySFX(SfxType.GroundCollision);
+
+            
+            SetAngularDrag(10);
+            m_rigidbody.mass = 10000;
         }
 
         public bool IsStable { get; private set; }
@@ -91,6 +98,8 @@ namespace DiaGna.ObjectFalling.BrickUtility
             if(m_rigidbody.velocity.magnitude < 0.5f)
             {
                 IsStable = true;
+                //if (m_OnGrounded)
+                //    m_rigidbody.isKinematic = true;
             }
             else
             {

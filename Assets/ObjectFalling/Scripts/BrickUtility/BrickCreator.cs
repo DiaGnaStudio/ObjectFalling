@@ -85,10 +85,12 @@ namespace DiaGna.ObjectFalling.BrickUtility
             {
                 var prefab = GetFromResource();
                 brick = Instantiate(prefab);
+                brick.transform.rotation = Quaternion.Euler(0, 45, 0);
             }
             else
             {
                 brick = Instantiate(m_BrickPrefabs[Random.Range(0, m_BrickPrefabs.Count)]);
+                brick.transform.rotation = Quaternion.Euler(0, 45, 0);
             }
 
             if (brick == null)
