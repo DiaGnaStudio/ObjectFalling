@@ -1,5 +1,6 @@
 using DiaGna.Framework.Singletons;
 using DiaGna.ObjectFalling.BrickUtility;
+using DiaGna.ObjectFalling.CraneManaging;
 using DiaGna.ObjectFalling.GroundUtility;
 using DiaGna.ObjectFalling.LevelUtility;
 using System;
@@ -21,20 +22,34 @@ namespace DiaGna.ObjectFalling.Gameplay
 
         private void OnEnable()
         {
-            Ground.Instance.OnRotated += AddBrick;
+            Crane.Instance.Component.Hook.OnDrop += OnDropBrick;
             LevelLoader.Instance.OnLoadLevel += SetHeight;
         }
 
         private void OnDisable()
         {
-            if (Ground.IsAlive)
+            if (Crane.IsAlive)
             {
-                Ground.Instance.OnRotated -= AddBrick;
+                Crane.Instance.Component.Hook.OnDrop -= OnDropBrick;
             }
 
             if (LevelLoader.IsAlive)
             {
                 LevelLoader.Instance.OnLoadLevel -= SetHeight;
+            }
+        }
+
+        private void OnDropBrick(IBrick brick)
+        {
+            brick.OnCollided += ConnectFallingObject;
+        }
+
+        private void ConnectFallingObject(IBrick[] bricks)
+        {
+            foreach (IBrick brick in bricks)
+            {
+                brick.OnCollided -= ConnectFallingObject;
+                AddBrick(brick);
             }
         }
 
@@ -48,25 +63,10 @@ namespace DiaGna.ObjectFalling.Gameplay
             m_CatchedBricks.Add(brick);
         }
 
-
-        //private void CheckBricksHeight(Brick brick)
-        //{
-        //    var lastHeight = brick.GetBrickHight();
-        //    if (lastHeight > m_CurrentHight)
-        //    {
-        //        m_CurrentHight = lastHeight;
-
-        //        OnChangeHeight?.Invoke(m_CurrentHight);
-
-        //        if (IsWin)
-        //        {
-        //            GlobalEvent.FinishGame(m_CurrentHight >= WinHight);
-        //        }
-        //    }
-        //}
-
         private void Update()
         {
+            if (m_CatchedBricks.Count == 0) return;
+
             var stableCount = 0;
             foreach(var brist in m_CatchedBricks)
             {

@@ -8,7 +8,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
     {
         private Brick[] m_CachedBricks;
 
-        public event Action<IBrick> OnCollided;
+        public event Action<IBrick[]> OnCollided;
 
         public bool m_Collided = false;
 
@@ -59,7 +59,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
             if (m_Collided) return;
             m_Collided = true;
 
-            OnCollided?.Invoke(this);
+            OnCollided?.Invoke(m_CachedBricks);
         }
 
         private void Update()

@@ -40,11 +40,13 @@ namespace DiaGna.ObjectFalling.GroundUtility
             brick.OnCollided += ConnectFallingObject;
         }
 
-        private void ConnectFallingObject(IBrick brick)
+        private void ConnectFallingObject(IBrick[] bricks)
         {
-            brick.OnCollided -= ConnectFallingObject;
-
-            AddBrick(brick);
+            foreach (IBrick brick in bricks)
+            {
+                brick.OnCollided -= ConnectFallingObject;
+                AddBrick(brick);
+            }
 
             RotateGround();
         }

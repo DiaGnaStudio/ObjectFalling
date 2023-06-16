@@ -14,7 +14,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
         /// <summary>
         /// Invokes when this brick collided with other object.
         /// </summary>
-        public event Action<IBrick> OnCollided;
+        public event Action<IBrick[]> OnCollided;
 
         public float GetDistanceToGround();
     }
@@ -31,7 +31,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private Rigidbody m_rigidbody;
 
-        private LayerMask m_GroundLayer;
+        [SerializeField] private LayerMask m_GroundLayer;
         private float m_DistanceToGround = 0;
 
         private BrickParent m_Parent;
@@ -50,7 +50,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
         /// <summary>
         /// Invokes when this brick collided with other object.
         /// </summary>
-        public event Action<IBrick> OnCollided
+        public event Action<IBrick[]> OnCollided
         {
             add => m_Parent.OnCollided += value;
             remove => m_Parent.OnCollided -= value;

@@ -91,6 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Height: 0
+  m_GroundLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!82 &2865321498489998851
 AudioSource:
   m_ObjectHideFlags: 0
