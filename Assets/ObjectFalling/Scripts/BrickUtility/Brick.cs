@@ -84,6 +84,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
         {
             SetAngularDrag(0.05f);
 
+            m_rigidbody.isKinematic = false;
             m_Parent.SetKinematic(false);
         }
 
@@ -117,9 +118,12 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private void Update()
         {
+            if (!m_OnGrounded) return;
+
             if (m_rigidbody.velocity.magnitude < 0.5f)
             {
                 IsStable = true;
+                m_rigidbody.isKinematic = true;
             }
             else
             {
