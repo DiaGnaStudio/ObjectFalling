@@ -650,6 +650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GamePage
       objectReference: {fileID: 0}
+    - target: {fileID: 3700945722602181708, guid: 8aa46c257d6ca9e43967c9b01cc006e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3700945722602181710, guid: 8aa46c257d6ca9e43967c9b01cc006e6, type: 3}
       propertyPath: m_WinPage
       value: 
@@ -760,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4367975474623739213, guid: 8aa46c257d6ca9e43967c9b01cc006e6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4473282174015982079, guid: 8aa46c257d6ca9e43967c9b01cc006e6, type: 3}
       propertyPath: m_RootOrder
@@ -816,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8466142065888551121, guid: f40da397f457e8a459dc0a73dd698162, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8466142065888551122, guid: f40da397f457e8a459dc0a73dd698162, type: 3}
       propertyPath: elements.Array.size
@@ -1296,7 +1300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6756257938221935380, guid: 9d89ba0ded7599449a5bbfbda308a58d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1409
+      value: -1508
       objectReference: {fileID: 0}
     - target: {fileID: 6756257938221935466, guid: 9d89ba0ded7599449a5bbfbda308a58d, type: 3}
       propertyPath: m_TargetPage
@@ -1361,6 +1365,10 @@ PrefabInstance:
       propertyPath: m_TargetPage
       value: 
       objectReference: {fileID: 3812394395242839520}
+    - target: {fileID: 8674718135604975295, guid: 2046145964985544a86abe4ab9404240, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -523.55554
+      objectReference: {fileID: 0}
     - target: {fileID: 8674718136075272725, guid: 2046145964985544a86abe4ab9404240, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1461,6 +1469,14 @@ PrefabInstance:
       propertyPath: elements.Array.data[0]
       value: 
       objectReference: {fileID: 3129912845219868169}
+    - target: {fileID: 8674718136240607199, guid: 2046145964985544a86abe4ab9404240, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 319
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070433783477837636, guid: 2046145964985544a86abe4ab9404240, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 815.4446
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2046145964985544a86abe4ab9404240, type: 3}
 --- !u!1 &918268519006698063 stripped
