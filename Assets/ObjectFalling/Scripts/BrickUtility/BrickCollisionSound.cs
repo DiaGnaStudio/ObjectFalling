@@ -15,15 +15,15 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         protected override void OnEnablePlayer()
         {
-            m_Brick.OnCollision += Play;
+            m_Brick.OnCollided += Play;
         }
 
         protected override void OnDisablePlayer()
         {
-            m_Brick.OnCollision -= Play;
+            m_Brick.OnCollided -= Play;
         }
 
-        private void Play(Brick brick, Collision collision)
+        private void Play(IBrick brick)
         {
             InternalPlay();
         }
