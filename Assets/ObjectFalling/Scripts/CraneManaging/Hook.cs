@@ -35,7 +35,7 @@ namespace DiaGna.ObjectFalling.CraneManaging
 
         public void AssignObject(IBrick currentBrick)
         {
-            currentBrick.BrickObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            currentBrick.BrickObject.transform.rotation = Quaternion.Euler(0, -135, 0);
             currentBrick.BrickObject.transform.position = new Vector3(m_Joint.transform.position.x, m_Joint.transform.localPosition.y - m_Offset, m_Joint.transform.position.x);
             m_Joint.connectedBody = currentBrick.Rigidbody;
             m_CurrentBrick = currentBrick;

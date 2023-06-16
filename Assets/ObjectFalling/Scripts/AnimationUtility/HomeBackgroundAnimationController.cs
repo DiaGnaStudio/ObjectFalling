@@ -1,4 +1,5 @@
 using DG.Tweening;
+using DiaGna.ObjectFalling.Gameplay;
 using System.Collections;
 using UnityEngine;
 
@@ -27,6 +28,28 @@ namespace DiaGna.ObjectFalling
         private void Start()
         {
             CreateMover();
+        }
+
+        private void OnEnable()
+        {
+            GlobalEvent.OnStartGame += Stop;
+            GlobalEvent.OnFinishGame += StartAgain;
+        }
+
+        private void OnDisable()
+        {
+            GlobalEvent.OnStartGame -= Stop;
+            GlobalEvent.OnFinishGame -= StartAgain;
+        }
+
+        private void StartAgain(bool isWin)
+        {
+            CreateMover();
+        }
+
+        private void Stop()
+        {
+            Destroy(m_CurrentController.gameObject);
         }
 
         private void CreateMover()
