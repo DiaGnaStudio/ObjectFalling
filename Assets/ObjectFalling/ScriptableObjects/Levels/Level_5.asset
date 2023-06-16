@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Level_5
   m_EditorClassIdentifier: 
   data:
-    m_id: Level3
+    m_id: Level5
     m_levelIndex: 4
-    m_winHeight: 20
+    m_winHeight: 25
     m_brickCount: 35
     m_brickPrefabs:
     - {fileID: 700672074304327351, guid: 51a20e0b38d06d64590005de5e9854df, type: 3}

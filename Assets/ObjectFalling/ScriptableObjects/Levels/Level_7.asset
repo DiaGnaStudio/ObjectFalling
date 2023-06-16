@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aa0c833b1477e64e8410da030ce0414, type: 3}
-  m_Name: Level_6
+  m_Name: Level_7
   m_EditorClassIdentifier: 
   data:
-    m_id: Level6
-    m_levelIndex: 5
-    m_winHeight: 30
-    m_brickCount: 35
+    m_id: Level7
+    m_levelIndex: 6
+    m_winHeight: 35
+    m_brickCount: 45
     m_brickPrefabs:
     - {fileID: 700672074304327351, guid: 51a20e0b38d06d64590005de5e9854df, type: 3}
     - {fileID: 995040380906210832, guid: 58a24999cf368424eb7c3c2767643376, type: 3}
