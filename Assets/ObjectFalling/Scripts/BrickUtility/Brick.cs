@@ -4,31 +4,63 @@ using UnityEngine;
 
 namespace DiaGna.ObjectFalling.BrickUtility
 {
+    public interface IBrick
+    {
+        public GameObject BrickObject { get; }
+        public Rigidbody Rigidbody { get; }
+        public float Height { get; }
+        public bool IsStable { get; }
+
+        /// <summary>
+        /// Invokes when this brick collided with other object.
+        /// </summary>
+        public event Action<IBrick> OnCollided;
+
+        public float GetDistanceToGround();
+    }
+
     /// <summary>
     /// A class to provides a brick
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
-    public class Brick : MonoBehaviour
+    public class Brick : MonoBehaviour, IBrick
     {
-        [SerializeField,Min(0)] private float m_Height;
+        [SerializeField, Min(0)] private float m_Height;
 
         private bool m_OnGrounded;
 
         private Rigidbody m_rigidbody;
 
-        [SerializeField] private LayerMask m_GroundLayer;
-        float m_DistanceToGround = 0;
+        private LayerMask m_GroundLayer;
+        private float m_DistanceToGround = 0;
 
-        public void SetGroundLayer(LayerMask layer) => m_GroundLayer = layer;
+        private BrickParent m_Parent;
+
         /// <summary>
         /// Reference of brick's rigidbody.
         /// </summary>
         public Rigidbody Rigidbody => m_rigidbody;
 
+        public bool IsStable { get; private set; }
+
+        public float Height => m_Height;
+
+        public GameObject BrickObject => gameObject;
+
         /// <summary>
         /// Invokes when this brick collided with other object.
         /// </summary>
-        public event Action<Brick, Collision> OnCollision;
+        public event Action<IBrick> OnCollided
+        {
+            add => m_Parent.OnCollided += value;
+            remove => m_Parent.OnCollided -= value;
+        }
+
+        public void Awake()
+        {
+            m_rigidbody = GetComponent<Rigidbody>();
+            SetAngularDrag(10f);
+        }
 
         private void OnEnable()
         {
@@ -43,18 +75,16 @@ namespace DiaGna.ObjectFalling.BrickUtility
             }
         }
 
-        public void Active()
+        public void SetParent(BrickParent parent)
         {
-            m_rigidbody = GetComponent<Rigidbody>();
-            SetAngularDrag(10f);
+            m_Parent = parent;
         }
 
-        private void OnDrop(Brick brick)
+        private void OnDrop(IBrick brick)
         {
             SetAngularDrag(0.05f);
 
-            var animalBrick = gameObject.GetComponent<AnimalBrick>();
-            animalBrick.SetChildRbIsKinematic(false);
+            m_Parent.SetKinematic(false);
         }
 
         private void SetAngularDrag(float dragValue)
@@ -62,44 +92,36 @@ namespace DiaGna.ObjectFalling.BrickUtility
             m_rigidbody.angularDrag = dragValue;
         }
 
-        public float GetBrickHight()
+        public float GetDistanceToGround()
         {
-            if (Physics.Raycast(transform.position, -Vector3.up, out hitInfo, Mathf.Infinity, m_GroundLayer))
+            if (Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hitInfo, Mathf.Infinity, m_GroundLayer))
             {
                 m_DistanceToGround = hitInfo.distance;
             }
 
             return Mathf.Ceil(m_DistanceToGround + m_Height);
         }
-        RaycastHit hitInfo;
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (Physics.Raycast(transform.position, -Vector3.up, out hitInfo, Mathf.Infinity, m_GroundLayer))
-            {
-                m_DistanceToGround = hitInfo.distance;
-            }
-
             if (m_OnGrounded) return;
-
             m_OnGrounded = true;
-            transform.SetParent(collision.transform.root);
-            OnCollision?.Invoke(this, collision);
 
-            
+            m_Parent.Colliding(this);
+
+            transform.SetParent(collision.transform.root);
+
             SetAngularDrag(10);
             m_rigidbody.mass = 10000;
-        }
 
-        public bool IsStable { get; private set; }
+            m_rigidbody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+        }
 
         private void Update()
         {
-            if(m_rigidbody.velocity.magnitude < 0.5f)
+            if (m_rigidbody.velocity.magnitude < 0.5f)
             {
                 IsStable = true;
-                //if (m_OnGrounded)
-                //    m_rigidbody.isKinematic = true;
             }
             else
             {

@@ -42,7 +42,7 @@ namespace DiaGna.ObjectFalling
             m_Animator.SetTrigger(m_ReleaseParameter);
         }
 
-        private void Catching(Brick brick)
+        private void Catching(IBrick brick)
         {
             m_Animator.SetTrigger(m_CatchParameter);
         }

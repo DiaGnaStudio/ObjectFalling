@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DiaGna.ObjectFalling.BrickUtility;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -42,9 +43,7 @@ namespace DiaGna.ObjectFalling
                 var rb = parentObj.AddComponent<Rigidbody>();
                 rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
 
-                var brick = parentObj.AddComponent<BrickUtility.Brick>();
-                brick.SetGroundLayer(m_layer);
-                parentObj.AddComponent<AnimalBrick>();
+                parentObj.AddComponent<BrickParent>();
 
                 instantiatedObjects.Add(parentObj);
 
