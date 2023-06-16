@@ -51,7 +51,16 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         public float GetDistanceToGround()
         {
-            return 0;
+            float max = 0;
+            foreach (var brick in m_CachedBricks)
+            {
+                var h = brick.GetDistanceToGround();
+                if (h > max)
+                {
+                    max = h;
+                }
+            }
+            return max;
         }
 
         public void Colliding(Brick brick)

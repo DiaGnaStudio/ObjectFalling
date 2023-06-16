@@ -81,7 +81,6 @@ namespace DiaGna.ObjectFalling.Gameplay
                 float maxHieght = 0;
                 foreach (var bricck in m_CatchedBricks)
                 {
-                    if (bricck == null) continue;
                     var height = bricck.GetDistanceToGround();
                     if (height > maxHieght)
                     {

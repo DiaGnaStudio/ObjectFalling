@@ -1,4 +1,5 @@
 ﻿using DiaGna.ObjectFalling.CraneManaging;
+using DiaGna.ObjectFalling.GroundUtility;
 using System;
 using UnityEngine;
 
@@ -110,7 +111,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
             m_Parent.Colliding(this);
 
-            transform.SetParent(collision.transform.root);
+            transform.SetParent(Ground.Instance.transform);
 
             SetAngularDrag(10);
             m_rigidbody.mass = 10000;
@@ -120,10 +121,9 @@ namespace DiaGna.ObjectFalling.BrickUtility
         {
             if (!m_OnGrounded) return;
 
-            if (m_rigidbody.velocity.magnitude < 0.5f)
+            if (m_rigidbody.velocity.magnitude < 0.1f)
             {
                 IsStable = true;
-                m_rigidbody.isKinematic = true;
             }
             else
             {
