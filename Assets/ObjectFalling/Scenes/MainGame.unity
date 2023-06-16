@@ -902,6 +902,7 @@ PrefabInstance:
     - {fileID: 4333744927520619582, guid: 0c4137f7edc9af44886dcdae814c01e3, type: 3}
     - {fileID: 1271347025, guid: 0c4137f7edc9af44886dcdae814c01e3, type: 3}
     - {fileID: 1271347026, guid: 0c4137f7edc9af44886dcdae814c01e3, type: 3}
+    - {fileID: 1438213793, guid: 0c4137f7edc9af44886dcdae814c01e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0c4137f7edc9af44886dcdae814c01e3, type: 3}
 --- !u!1001 &5076449848062691727
 PrefabInstance:
@@ -1068,6 +1069,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7272554093824155643, guid: c9bcc5f26ce883a4898b5fafbd2cc22a, type: 3}
+      propertyPath: levels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272554093824155643, guid: c9bcc5f26ce883a4898b5fafbd2cc22a, type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 317d3ca42837318448666353d296f49e, type: 2}
+    - target: {fileID: 7272554093824155643, guid: c9bcc5f26ce883a4898b5fafbd2cc22a, type: 3}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 99aa2b50fed5fa3478c72d8d846429c3, type: 2}
     - target: {fileID: 7272554093824155644, guid: c9bcc5f26ce883a4898b5fafbd2cc22a, type: 3}
       propertyPath: m_Name
       value: LevelLoader
