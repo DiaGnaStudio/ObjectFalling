@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2968912198753741997}
   - component: {fileID: 6911147867295462529}
-  - component: {fileID: 6976184678807766194}
   - component: {fileID: 1586088623121054030}
   m_Layer: 0
   m_Name: Bricks-Owl_2
@@ -51,22 +50,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &6976184678807766194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4510973777012676963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bec0d77bffb01b4fa6123f494329b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Height: 0
-  m_GroundLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &1586088623121054030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c217967d3bc3144be134da23d1852d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Collided: 0
 --- !u!1001 &1330423640496699464
 PrefabInstance:
   m_ObjectHideFlags: 0

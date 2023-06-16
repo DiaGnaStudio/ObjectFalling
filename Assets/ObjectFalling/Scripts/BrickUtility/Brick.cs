@@ -113,8 +113,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
             SetAngularDrag(10);
             m_rigidbody.mass = 10000;
-
-            m_rigidbody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
         }
 
         private void Update()

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4919994630498593253}
   - component: {fileID: 6111405415782497703}
-  - component: {fileID: 7497637261240140856}
   - component: {fileID: 4530935050902892306}
   m_Layer: 0
   m_Name: Bricks-Goat_4
@@ -53,22 +52,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &7497637261240140856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6891510475073077855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bec0d77bffb01b4fa6123f494329b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Height: 0
-  m_GroundLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &4530935050902892306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c217967d3bc3144be134da23d1852d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Collided: 0
 --- !u!1001 &39607479996275052
 PrefabInstance:
   m_ObjectHideFlags: 0

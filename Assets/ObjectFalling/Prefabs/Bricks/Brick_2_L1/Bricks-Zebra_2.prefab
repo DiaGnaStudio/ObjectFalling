@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 36146049844629089}
   - component: {fileID: -5014910771351979768}
-  - component: {fileID: -1064975420198952675}
   - component: {fileID: 618282530585092637}
   m_Layer: 0
   m_Name: Bricks-Zebra_2
@@ -51,22 +50,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &-1064975420198952675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876625519364750202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bec0d77bffb01b4fa6123f494329b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Height: 0
-  m_GroundLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &618282530585092637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c217967d3bc3144be134da23d1852d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Collided: 0
 --- !u!1001 &1799771143893847104
 PrefabInstance:
   m_ObjectHideFlags: 0

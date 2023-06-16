@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8920993899600337779}
   - component: {fileID: 1577170509753101989}
-  - component: {fileID: 7363628175010185785}
   - component: {fileID: 1226297741936611535}
   m_Layer: 0
   m_Name: Bricks-Bunny_4
@@ -53,22 +52,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &7363628175010185785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5161103024014082217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bec0d77bffb01b4fa6123f494329b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Height: 0
-  m_GroundLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &1226297741936611535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c217967d3bc3144be134da23d1852d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Collided: 0
 --- !u!1001 &562332647984303468
 PrefabInstance:
   m_ObjectHideFlags: 0
