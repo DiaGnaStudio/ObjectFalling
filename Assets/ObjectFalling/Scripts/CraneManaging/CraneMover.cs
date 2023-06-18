@@ -6,6 +6,7 @@ namespace DiaGna.ObjectFalling.CraneManaging
 {
     public class CraneMover : MonoBehaviour
     {
+        [SerializeField] private float m_Offset = 1.4142f;
         [SerializeField] private float m_Speed = 10.0f;
         [SerializeField] private Limit m_HorizontalLimit;
         [SerializeField] private Limit m_VerticalLimit;
@@ -43,21 +44,28 @@ namespace DiaGna.ObjectFalling.CraneManaging
         }
 
 
-        
+
         private void MoveHook(Vector2 vector)
         {
             float horizontal = vector.x * m_Speed * Time.deltaTime;
             float vertical = vector.y * m_Speed * Time.deltaTime;
-            
+
             //var currentPostion = transform.position;
             //transform.position = new Vector3(m_HorizontalLimit.GetValue(currentPostion.x + horizontal), m_PremitiveHight, m_VerticalLimit.GetValue(currentPostion.z + vertical));
 
             var currentPos = finalPosition;
             finalPosition = new Vector3(m_HorizontalLimit.GetValue(currentPos.x + horizontal), transform.position.y, m_VerticalLimit.GetValue(currentPos.z + vertical));
 
-            if (Mathf.Abs(Vector3.Distance(finalPosition, transform.position)) >= 1)
+            if (Mathf.Abs(finalPosition.x - transform.position.x) >= m_Offset)
             {
-                transform.position = Vector3Int.FloorToInt(finalPosition);
+                if(finalPosition.x > transform.position.x)
+                {
+                    transform.position += Vector3.right * m_Offset;
+                }
+                else
+                {
+                    transform.position -= Vector3.right * m_Offset;
+                }
             }
         }
     }

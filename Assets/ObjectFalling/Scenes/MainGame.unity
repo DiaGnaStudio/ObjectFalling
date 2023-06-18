@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.74061596, g: 0.93957424, b: 0.92645967, a: 1}
+  m_IndirectSpecularColor: {r: 0.7451814, g: 0.9390539, b: 0.93065256, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -248,6 +248,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1372715657398535189, guid: 775ae31d3e455ec4f8bdfa1ab600eb5d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372715657398535189, guid: 775ae31d3e455ec4f8bdfa1ab600eb5d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372715657398535189, guid: 775ae31d3e455ec4f8bdfa1ab600eb5d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1372715657398535189, guid: 775ae31d3e455ec4f8bdfa1ab600eb5d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3812394395068390231, guid: 775ae31d3e455ec4f8bdfa1ab600eb5d, type: 3}
       propertyPath: m_Name
       value: GameCanvas
@@ -338,6 +354,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4263242586237902051, guid: 775ae31d3e455ec4f8bdfa1ab600eb5d, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6246807571983958412, guid: 775ae31d3e455ec4f8bdfa1ab600eb5d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6246807571983958412, guid: 775ae31d3e455ec4f8bdfa1ab600eb5d, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7201452442487106202, guid: 775ae31d3e455ec4f8bdfa1ab600eb5d, type: 3}
@@ -1131,6 +1155,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 5708167948708158854, guid: 4dcc7265bcdb35943b30213c52ce0565, type: 3}
+      propertyPath: m_roteteDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5733221488734968616, guid: 4dcc7265bcdb35943b30213c52ce0565, type: 3}
       propertyPath: m_TagString
       value: Ground
@@ -1193,7 +1221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8176476051037340893, guid: 4dcc7265bcdb35943b30213c52ce0565, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8176476051037340893, guid: 4dcc7265bcdb35943b30213c52ce0565, type: 3}
       propertyPath: m_TagString
