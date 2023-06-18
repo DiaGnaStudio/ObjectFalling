@@ -32,7 +32,7 @@ namespace DiaGna.ObjectFalling.GroundUtility
         {
             if (currentHight > m_ViewHeight)
             {
-                MoveDown(currentHight - m_lastHeight);
+                MoveDown(currentHight - m_ViewHeight);
             }
             else if(m_hasLastMove && currentHight < m_lastHeight)
             {

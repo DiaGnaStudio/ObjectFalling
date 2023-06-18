@@ -1,7 +1,5 @@
 using DiaGna.Framework.Singletons;
 using DiaGna.ObjectFalling.BrickUtility;
-using DiaGna.ObjectFalling.CraneManaging;
-using DiaGna.ObjectFalling.GroundUtility;
 using DiaGna.ObjectFalling.LevelUtility;
 using System;
 using System.Collections.Generic;
@@ -11,98 +9,72 @@ namespace DiaGna.ObjectFalling.Gameplay
 {
     public class HeightController : ComponentSingleton<HeightController>
     {
-        private float m_CurrentHight;
-        private float m_WinHight;
+        [SerializeField] private LayerMask m_BrickLayer;
+        [SerializeField] private LayerMask m_GroundLayer;
+
+        private float m_CurrentDistance;
+        private float m_WinDistance;
 
         private List<IBrick> m_CatchedBricks = new List<IBrick>();
-
-        public bool IsWin => m_CurrentHight >= m_WinHight;
 
         public event Action<float> OnChangeHeight;
 
         private void OnEnable()
         {
-            Crane.Instance.Component.Hook.OnDrop += OnDropBrick;
             LevelLoader.Instance.OnLoadLevel += SetHeight;
 
             if (LevelLoader.Instance.IsLevelActive)
             {
                 SetHeight(LevelLoader.Instance.ActiveLevel);
             }
+
+            BrickCountAnnouncer.OnCollidedBrick += AddBrick;
         }
 
         private void OnDisable()
         {
-            if (Crane.IsAlive)
-            {
-                Crane.Instance.Component.Hook.OnDrop -= OnDropBrick;
-            }
-
             if (LevelLoader.IsAlive)
             {
                 LevelLoader.Instance.OnLoadLevel -= SetHeight;
             }
-        }
 
-        private void OnDropBrick(IBrick brick)
-        {
-            brick.OnCollided += ConnectFallingObject;
-        }
-
-        private void ConnectFallingObject(IBrick[] bricks)
-        {
-            foreach (IBrick brick in bricks)
-            {
-                brick.OnCollided -= ConnectFallingObject;
-                AddBrick(brick);
-            }
+            BrickCountAnnouncer.OnCollidedBrick -= AddBrick;
         }
 
         private void SetHeight(LevelData data)
         {
-            m_WinHight = data.WinHeight;
+            m_WinDistance = data.WinHeight;
         }
 
-        private void AddBrick(IBrick brick)
+        private void AddBrick(IBrick brick, List<IBrick> list)
         {
-            m_CatchedBricks.Add(brick);
+            if (!m_CatchedBricks.Contains(brick))
+            {
+                m_CatchedBricks.Add(brick);
+            }
         }
 
         private void Update()
         {
-            if (m_CatchedBricks.Count == 0) return;
-
-            var stableCount = 0;
-            foreach(var brist in m_CatchedBricks)
+            float maxDistance = 0;
+            foreach (var brick in m_CatchedBricks)
             {
-                if (brist.IsStable)
+                var distanceToGround = brick.GetDistanceToGround();
+
+                if (distanceToGround > maxDistance)
                 {
-                    stableCount++;
+                    maxDistance = distanceToGround;
                 }
             }
 
-            if(stableCount == m_CatchedBricks.Count)
+            if (m_CurrentDistance != maxDistance)
             {
-                float maxHieght = 0;
-                foreach (var bricck in m_CatchedBricks)
-                {
-                    var height = bricck.GetDistanceToGround();
-                    if (height > maxHieght)
-                    {
-                        maxHieght = height;
-                    }
-                }
+                m_CurrentDistance = maxDistance;
+                OnChangeHeight?.Invoke(m_CurrentDistance);
 
-                if (m_CurrentHight != maxHieght)
+                if (m_WinDistance <= m_CurrentDistance)
                 {
-                    m_CurrentHight = maxHieght;
-                    Debug.Log(m_CurrentHight);
-                    OnChangeHeight?.Invoke(m_CurrentHight);
-
-                    if (m_WinHight <= m_CurrentHight)
-                    {
-                        GlobalEvent.FinishGame(true);
-                    }
+                    GlobalEvent.FinishGame(true);
                 }
             }
         }
@@ -111,7 +83,7 @@ namespace DiaGna.ObjectFalling.Gameplay
         {
 #if UNITY_EDITOR
             Gizmos.color = Color.green;
-            var hightPosition = transform.position + Vector3.up * m_WinHight;
+            var hightPosition = transform.position + Vector3.up * m_WinDistance;
             Gizmos.DrawLine(transform.position, hightPosition);
             UnityEditor.Handles.color = Color.green;
             UnityEditor.Handles.DrawWireDisc(hightPosition, Vector3.up, 5);

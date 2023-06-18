@@ -8,8 +8,6 @@ namespace DiaGna.ObjectFalling.CraneManaging
     [RequireComponent(typeof(Joint))]
     public class Hook : MonoBehaviour
     {
-        [SerializeField] private float m_Offset;
-
         private IBrick m_CurrentBrick;
 
         [Header("Components")]
@@ -33,22 +31,24 @@ namespace DiaGna.ObjectFalling.CraneManaging
             MoverJoystick.OnPointerUpEvent -= DropObject;
         }
 
-        public void AssignObject(IBrick currentBrick)
-        {
-            currentBrick.BrickObject.transform.rotation = Quaternion.Euler(0, -135, 0);
-            currentBrick.BrickObject.transform.position = new Vector3(m_Joint.transform.position.x, m_Joint.transform.localPosition.y - m_Offset, m_Joint.transform.position.x);
-            m_Joint.connectedBody = currentBrick.Rigidbody;
-            m_CurrentBrick = currentBrick;
-
-            OnCatch?.Invoke(currentBrick);
-        }
-
         private void DropObject()
         {
             if (m_Joint.connectedBody == null) return;
             m_Joint.connectedBody = null;
 
+            m_CurrentBrick.Drop();
             OnDrop?.Invoke(m_CurrentBrick);
+        }
+
+        public void AssignObject(IBrick currentBrick)
+        {
+            if (currentBrick == null) return;
+            currentBrick.BrickObject.transform.rotation = Quaternion.Euler(0, -135, 0);
+            currentBrick.BrickObject.transform.position = m_Joint.transform.position - m_Joint.connectedAnchor;
+            m_Joint.connectedBody = currentBrick.Rigidbody;
+            m_CurrentBrick = currentBrick;
+
+            OnCatch?.Invoke(currentBrick);
         }
     }
 }

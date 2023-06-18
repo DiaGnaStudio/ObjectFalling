@@ -8,7 +8,23 @@ namespace DiaGna.ObjectFalling.BrickUtility
     {
         private Brick[] m_CachedBricks;
 
-        public event Action<IBrick[]> OnCollided;
+        public event Action<IBrick> OnCollided
+        {
+            add
+            {
+                foreach (var brick in m_CachedBricks)
+                {
+                    brick.OnCollided += value;
+                }
+            }
+            remove
+            {
+                foreach (var brick in m_CachedBricks)
+                {
+                    brick.OnCollided += value;
+                }
+            }
+        }
 
         public bool m_Collided = false;
 
@@ -18,17 +34,27 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         public Rigidbody Rigidbody { get; private set; }
 
-        public bool IsStable { get; private set; }
+        public bool IsStable
+        {
+            get
+            {
+                var stableCount = 0;
+                foreach (var brick in m_CachedBricks)
+                {
+                    if (brick.IsStable)
+                    {
+                        stableCount++;
+                    }
+                }
+
+                return stableCount == m_CachedBricks.Length;
+            }
+        }
 
         private void Awake()
         {
             Rigidbody = GetComponent<Rigidbody>();
             m_CachedBricks = GetComponentsInChildren<Brick>();
-
-            foreach(var brick in m_CachedBricks)
-            {
-                brick.SetParent(this);
-            }
         }
 
         private void Start()
@@ -63,26 +89,13 @@ namespace DiaGna.ObjectFalling.BrickUtility
             return max;
         }
 
-        public void Colliding(Brick brick)
+        public void Drop()
         {
-            if (m_Collided) return;
-            m_Collided = true;
-
-            OnCollided?.Invoke(m_CachedBricks);
-        }
-
-        private void Update()
-        {
-            var stableCount = 0;
-            foreach(var brick in m_CachedBricks)
+            foreach (var brick in m_CachedBricks)
             {
-                if (brick.IsStable)
-                {
-                    stableCount++;
-                }
+                brick.Drop();
+                brick.Rigidbody.isKinematic = false;
             }
-
-            IsStable = stableCount == m_CachedBricks.Length;
         }
     }
 }

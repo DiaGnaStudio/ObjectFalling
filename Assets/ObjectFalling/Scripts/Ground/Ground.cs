@@ -14,14 +14,17 @@ namespace DiaGna.ObjectFalling.GroundUtility
     {
         [Header("Components")]
         [SerializeField] private GroundRotator m_groundRotator;
+        [SerializeField] private GroundTiles m_Tiles;
+
+        public GroundTiles Tiles => m_Tiles;
 
         /// <summary>
-        /// <inheritdoc cref="GroundRotator.OnRotated"/>
+        /// <inheritdoc cref="GroundRotator.OnFinishRotating"/>
         /// </summary>
-        public event Action<IBrick> OnRotated
+        public event Action OnFinishRotating
         {
-            add => m_groundRotator.OnRotated += value;
-            remove => m_groundRotator.OnRotated -= value;
+            add => m_groundRotator.OnFinishRotating += value;
+            remove => m_groundRotator.OnFinishRotating -= value;
         }
     }
 }

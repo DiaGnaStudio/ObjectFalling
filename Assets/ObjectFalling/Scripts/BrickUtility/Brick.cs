@@ -1,25 +1,10 @@
-﻿using DiaGna.ObjectFalling.CraneManaging;
+﻿using DiaGna.ObjectFalling.Gameplay;
 using DiaGna.ObjectFalling.GroundUtility;
 using System;
 using UnityEngine;
 
 namespace DiaGna.ObjectFalling.BrickUtility
 {
-    public interface IBrick
-    {
-        public GameObject BrickObject { get; }
-        public Rigidbody Rigidbody { get; }
-        public float Height { get; }
-        public bool IsStable { get; }
-
-        /// <summary>
-        /// Invokes when this brick collided with other object.
-        /// </summary>
-        public event Action<IBrick[]> OnCollided;
-
-        public float GetDistanceToGround();
-    }
-
     /// <summary>
     /// A class to provides a brick
     /// </summary>
@@ -27,6 +12,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
     public class Brick : MonoBehaviour, IBrick
     {
         [SerializeField, Min(0)] private float m_Height;
+        [SerializeField, Min(0)] private float m_RayDistance;
 
         private bool m_OnGrounded;
 
@@ -34,8 +20,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         [SerializeField] private LayerMask m_GroundLayer;
         private float m_DistanceToGround = 0;
-
-        private BrickParent m_Parent;
 
         /// <summary>
         /// Reference of brick's rigidbody.
@@ -51,11 +35,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
         /// <summary>
         /// Invokes when this brick collided with other object.
         /// </summary>
-        public event Action<IBrick[]> OnCollided
-        {
-            add => m_Parent.OnCollided += value;
-            remove => m_Parent.OnCollided -= value;
-        }
+        public event Action<IBrick> OnCollided;
 
         public void Awake()
         {
@@ -63,30 +43,11 @@ namespace DiaGna.ObjectFalling.BrickUtility
             SetAngularDrag(10f);
         }
 
-        private void OnEnable()
-        {
-            Crane.Instance.Component.Hook.OnDrop += OnDrop;
-        }
-
-        private void OnDisable()
-        {
-            if (Crane.IsAlive)
-            {
-                Crane.Instance.Component.Hook.OnDrop -= OnDrop;
-            }
-        }
-
-        public void SetParent(BrickParent parent)
-        {
-            m_Parent = parent;
-        }
-
-        private void OnDrop(IBrick brick)
+        public void Drop()
         {
             SetAngularDrag(0.05f);
 
             m_rigidbody.isKinematic = false;
-            m_Parent.SetKinematic(false);
         }
 
         private void SetAngularDrag(float dragValue)
@@ -96,25 +57,45 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         public float GetDistanceToGround()
         {
-            if (Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hitInfo, Mathf.Infinity, m_GroundLayer))
-            {
-                m_DistanceToGround = hitInfo.distance;
-            }
+            if (!m_OnGrounded) return -1;
+            if (transform.position.y < Ground.Instance.transform.position.y) return -1;
+
+            m_DistanceToGround = Vector3.Distance(transform.position, new Vector3(transform.position.x, Ground.Instance.transform.position.y, transform.position.z));
 
             return Mathf.Ceil(m_DistanceToGround + m_Height);
         }
 
         private void OnCollisionEnter(Collision collision)
         {
+            CollisionChecking();
+        }
+
+        private void OnCollisionStay(Collision collision)
+        {
+            CollisionChecking();
+        }
+
+        private void CollisionChecking()
+        {
             if (m_OnGrounded) return;
-            m_OnGrounded = true;
+            if (Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hit, m_RayDistance))
+            {
+                if (hit.transform.CompareTag(Ground.Instance.tag))
+                {
+                    m_OnGrounded = true;
 
-            m_Parent.Colliding(this);
+                    OnCollided?.Invoke(this);
 
-            transform.SetParent(Ground.Instance.transform);
+                    BrickCountAnnouncer.AddCollidedBrick(this);
 
-            SetAngularDrag(10);
-            m_rigidbody.mass = 10000;
+                    transform.SetParent(Ground.Instance.transform);
+
+                    SetAngularDrag(10);
+                    m_rigidbody.mass = 10000;
+
+                    gameObject.tag = Ground.Instance.tag;
+                }
+            }
         }
 
         private void Update()

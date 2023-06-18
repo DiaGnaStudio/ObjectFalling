@@ -26,7 +26,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
         private void OnEnable()
         {
             GlobalEvent.OnFinishGame += StopCreating;
-            Ground.Instance.OnRotated += CheckCrating;
+            Ground.Instance.OnFinishRotating += Creating;
         }
 
 
@@ -35,7 +35,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
             GlobalEvent.OnFinishGame -= StopCreating;
             if (Ground.IsAlive)
             {
-                Ground.Instance.OnRotated -= CheckCrating;
+                Ground.Instance.OnFinishRotating -= Creating;
             }
         }
 
@@ -56,15 +56,16 @@ namespace DiaGna.ObjectFalling.BrickUtility
             }
         }
 
-        private void CheckCrating(IBrick brick)
-        {
-            Creating();
-        }
-
         private void Creating()
         {
+            if (!BrickCountAnnouncer.CanCreate())
+            {
+                GlobalEvent.FinishGame(false);
+            }
+
             if (!m_CanCreate) return;
             m_CanCreate = true;
+
             m_CreatingCoroutine = StartCoroutine(WaitToCreate());
         }
 
@@ -73,17 +74,21 @@ namespace DiaGna.ObjectFalling.BrickUtility
             yield return new WaitForSeconds(m_Delay);
 
             IBrick brick = GetBrick();
+            BrickCountAnnouncer.AddBrick(brick);
             Crane.Instance.Component.Hook.AssignObject(brick);
         }
 
         private IBrick GetBrick()
         {
-            GameObject brick;
+            GameObject brick = null;
             if (m_BrickPrefabs.Count == 0)
             {
                 var prefab = GetFromResource();
-                brick = Instantiate(prefab.BrickObject);
-                brick.transform.rotation = Quaternion.Euler(0, 45, 0);
+                if (prefab != null)
+                {
+                    brick = Instantiate(prefab.BrickObject);
+                    brick.transform.rotation = Quaternion.Euler(0, 45, 0);
+                }
             }
             else
             {
@@ -91,13 +96,16 @@ namespace DiaGna.ObjectFalling.BrickUtility
                 brick.transform.rotation = Quaternion.Euler(0, 45, 0);
             }
 
-            if (brick == null)
+            if (brick != null)
+            {
+                var brickComponent = brick.GetComponent<IBrick>();
+                return brickComponent;
+            }
+            else
             {
                 Debug.LogError("No brick avaialbe!");
+                return null;
             }
-
-            var brickComponent = brick.GetComponent<IBrick>();
-            return brickComponent;
         }
 
         private IBrick GetFromResource()

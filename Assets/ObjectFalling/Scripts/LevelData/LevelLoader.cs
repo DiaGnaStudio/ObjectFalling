@@ -22,6 +22,12 @@ namespace DiaGna.ObjectFalling.LevelUtility
             GlobalEvent.OnFinishGame += FinishActiveLevel;
         }
 
+        private void OnDisable()
+        {
+            GlobalEvent.OnStartGame -= LoadLevel;
+            GlobalEvent.OnFinishGame -= FinishActiveLevel;
+        }
+
         private void LoadLevel()
         {
             if (IsLevelActive) return;
@@ -30,12 +36,8 @@ namespace DiaGna.ObjectFalling.LevelUtility
             var newLevel = GetLevel(ProfileController.Instance.Profile.CurrentLevelIndex);
             ActiveLevel = newLevel;
             OnLoadLevel?.Invoke(newLevel);
-        }
 
-        private void OnDisable()
-        {
-            GlobalEvent.OnStartGame -= LoadLevel;
-            GlobalEvent.OnFinishGame -= FinishActiveLevel;
+            BrickCountAnnouncer.StartCounting(newLevel);
         }
 
         private void FinishActiveLevel(bool isWin)

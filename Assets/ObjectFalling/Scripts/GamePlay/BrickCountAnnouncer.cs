@@ -1,87 +1,50 @@
 ﻿using DiaGna.ObjectFalling.BrickUtility;
-using DiaGna.ObjectFalling.GroundUtility;
-using DiaGna.ObjectFalling.LevelUtility;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace DiaGna.ObjectFalling.Gameplay
 {
-    public class BrickCountAnnouncer : MonoBehaviour
+    public static class BrickCountAnnouncer
     {
-        public int Count { get; private set; }
-        public int ThrowedCount => AvailableBricks.Count;
+        public static int TotalCount { get; private set; }
+        public static int CreatedCount => CountedBricks.Count;
 
         /// <summary>
         /// Parameters: brick throwed count, total count
         /// </summary>
         public static event Action<int, int> OnIncrease;
+        public static event Action<IBrick, List<IBrick>> OnCollidedBrick;
+        public static event Action<IBrick, List<IBrick>> OnCreatedBrick;
 
-        private List<IBrick> AvailableBricks;
+        private static List<IBrick> CountedBricks = new List<IBrick>();
+        private static List<IBrick> DroppedBricks = new List<IBrick>();
 
-        private void Awake()
+        public static void StartCounting(LevelData data)
         {
-            AvailableBricks = new List<IBrick>();
+            CountedBricks.Clear();
+            DroppedBricks.Clear();
+            TotalCount = data.BrickCount;
         }
 
-        private void OnEnable()
+        public static void AddCollidedBrick(IBrick brick)
         {
-            LevelLoader.Instance.OnLoadLevel += SetBrickCount;
-            Ground.Instance.OnRotated += AddBrick;
-            GlobalEvent.OnStartGame += StartCounting;
-            GlobalEvent.OnFinishGame += DestoyBricks;
+            if (CountedBricks.Contains(brick)) return;
+            CountedBricks.Add(brick);
 
-            if (LevelLoader.Instance.IsLevelActive)
-            {
-                SetBrickCount(LevelLoader.Instance.ActiveLevel);
-            }
+            OnIncrease?.Invoke(CreatedCount, TotalCount);
+            OnCollidedBrick?.Invoke(brick, DroppedBricks);
         }
 
-        private void OnDisable()
+        public static void AddBrick(IBrick brick)
         {
-            if (LevelLoader.IsAlive)
-            {
-                LevelLoader.Instance.OnLoadLevel -= SetBrickCount;
-            }
-
-            if (Ground.IsAlive)
-            {
-                Ground.Instance.OnRotated -= AddBrick;
-            }
-
-            GlobalEvent.OnStartGame -= StartCounting;
-            GlobalEvent.OnFinishGame -= DestoyBricks;
+            if (DroppedBricks.Contains(brick)) return;
+            DroppedBricks.Add(brick);
+            OnCreatedBrick?.Invoke(brick, DroppedBricks);
         }
 
-        private void StartCounting()
+        public static bool CanCreate()
         {
-            AvailableBricks.Clear();
-        }
-
-        private void SetBrickCount(LevelData data)
-        {
-            Count = data.BrickCount;
-        }
-
-        private void AddBrick(IBrick brick)
-        {
-            AvailableBricks.Add(brick);
-
-            if (ThrowedCount >= Count)
-            {
-                var isWin = GlobalEvent.IsWin;
-                GlobalEvent.FinishGame(isWin);
-            }
-
-            OnIncrease?.Invoke(ThrowedCount, Count);
-        }
-
-        private void DestoyBricks(bool obj)
-        {
-            foreach (var brick in AvailableBricks)
-            {
-                Destroy(brick.BrickObject);
-            }
+            return CreatedCount < TotalCount;
         }
     }
 }

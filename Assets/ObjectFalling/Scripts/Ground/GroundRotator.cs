@@ -1,5 +1,6 @@
 using DiaGna.ObjectFalling.BrickUtility;
 using DiaGna.ObjectFalling.CraneManaging;
+using DiaGna.ObjectFalling.Gameplay;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,15 +16,16 @@ namespace DiaGna.ObjectFalling.GroundUtility
         [SerializeField] private float m_rotationAmount = 90.0f;
         [SerializeField] private float m_roteteDuration;
 
-        private readonly List<IBrick> m_BrickList = new List<IBrick>();
+        private bool m_CanRotated = false;
 
         /// <summary>
         /// Invokes when the ground rotation finished.
         /// </summary>
-        public event Action<IBrick> OnRotated;
+        public event Action OnFinishRotating;
 
         private void OnEnable()
         {
+            Crane.Instance.Component.Hook.OnCatch += StartChecking;
             Crane.Instance.Component.Hook.OnDrop += OnDropBrick;
         }
 
@@ -31,8 +33,14 @@ namespace DiaGna.ObjectFalling.GroundUtility
         {
             if (Crane.IsAlive)
             {
+                Crane.Instance.Component.Hook.OnCatch -= StartChecking;
                 Crane.Instance.Component.Hook.OnDrop -= OnDropBrick;
             }
+        }
+
+        private void StartChecking(IBrick brick)
+        {
+            m_CanRotated = true;
         }
 
         private void OnDropBrick(IBrick brick)
@@ -40,27 +48,18 @@ namespace DiaGna.ObjectFalling.GroundUtility
             brick.OnCollided += ConnectFallingObject;
         }
 
-        private void ConnectFallingObject(IBrick[] bricks)
+        private void ConnectFallingObject(IBrick brick)
         {
-            foreach (IBrick brick in bricks)
-            {
-                brick.OnCollided -= ConnectFallingObject;
-                AddBrick(brick);
-            }
+            brick.OnCollided -= ConnectFallingObject;
 
             RotateGround();
         }
 
-        private void AddBrick(IBrick brick)
-        {
-            if (!m_BrickList.Contains(brick))
-            {
-                m_BrickList.Add(brick);
-            }
-        }
-
         private void RotateGround()
         {
+            if (!m_CanRotated) return;
+            m_CanRotated = false;
+
             StartCoroutine(RotateCube());
         }
 
@@ -84,9 +83,7 @@ namespace DiaGna.ObjectFalling.GroundUtility
 
         private void EndRotation()
         {
-            var brick = m_BrickList[m_BrickList.Count - 1];
-
-            OnRotated?.Invoke(brick);
+            OnFinishRotating?.Invoke();
         }
     }
 }

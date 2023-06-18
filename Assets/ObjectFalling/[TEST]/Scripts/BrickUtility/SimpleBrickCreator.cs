@@ -16,9 +16,9 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
 
         private void OnEnable()
         {
-            GlobalEvent.OnStartGame += StartCreating;
+            GlobalEvent.OnStartGame += Creating;
             GlobalEvent.OnFinishGame += StopCreating;
-            Ground.Instance.OnRotated += CheckCrating;
+            Ground.Instance.OnFinishRotating += Creating;
         }
 
 
@@ -28,14 +28,8 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
             GlobalEvent.OnFinishGame -= StopCreating;
             if (Ground.IsAlive)
             {
-                Ground.Instance.OnRotated -= CheckCrating;
+                Ground.Instance.OnFinishRotating -= Creating;
             }
-        }
-
-        private void StartCreating()
-        {
-            m_CanCreate = true;
-            Creating();
         }
 
         private void StopCreating(bool isWin)
@@ -43,15 +37,9 @@ namespace DiaGna.ObjectFalling.BrickUtility.Test
             m_CanCreate = false;
         }
 
-        private void CheckCrating(IBrick brick)
-        {
-            if (!m_CanCreate) return;
-
-            Creating();
-        }
-
         private void Creating()
         {
+            if (!m_CanCreate) return;
             m_CanCreate = true;
             StartCoroutine(WaitToCreate());
         }

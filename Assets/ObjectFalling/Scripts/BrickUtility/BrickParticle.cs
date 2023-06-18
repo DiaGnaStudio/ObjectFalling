@@ -16,7 +16,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
             brick.OnCollided -= PlayParticle;
         }
 
-        private void PlayParticle(IBrick[] brick)
+        private void PlayParticle(IBrick brick)
         {
             var particle = InstantiateParticle();
             particle.Play();

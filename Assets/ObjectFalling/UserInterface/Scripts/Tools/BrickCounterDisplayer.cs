@@ -1,8 +1,11 @@
+using DiaGna.ObjectFalling.BrickUtility;
 using DiaGna.ObjectFalling.Gameplay;
 using DiaGna.ObjectFalling.LevelUtility;
 using DiaGna.UserInterface;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static Codice.CM.Common.CmCallContext;
 
 namespace DiaGna.ObjectFalling.UserInterface.Tools
 {
@@ -10,6 +13,7 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
     {
         [SerializeField] private TMP_Text m_CountText;
         [SerializeField] private string m_format = "{0}/{1}";
+        private float m_Max;
 
         public override void OnLoadElement()
         {
@@ -21,7 +25,7 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
         public override void OnEnableElement()
         {
             LevelLoader.Instance.OnLoadLevel += SetBrickCount;
-            BrickCountAnnouncer.OnIncrease += UpdateText;
+            BrickCountAnnouncer.OnCollidedBrick += UpdateText;
 
             if (LevelLoader.Instance.IsLevelActive)
             {
@@ -32,17 +36,23 @@ namespace DiaGna.ObjectFalling.UserInterface.Tools
         public override void OnDisableElement()
         {
             LevelLoader.Instance.OnLoadLevel += SetBrickCount;
-            BrickCountAnnouncer.OnIncrease -= UpdateText;
+            BrickCountAnnouncer.OnCollidedBrick -= UpdateText;
         }
 
         private void SetBrickCount(LevelData data)
         {
-            UpdateText(0, data.BrickCount);
+            m_Max = data.BrickCount;
+            UpdateText(0);
         }
 
-        private void UpdateText(int current, int total)
+        private void UpdateText(IBrick brick, List<IBrick> list)
         {
-            m_CountText.SetText(string.Format(m_format, current, total));
+            UpdateText(list.Count);
+        }
+
+        private void UpdateText(int current)
+        {
+            m_CountText.SetText(string.Format(m_format, current, m_Max));
         }
     }
 }

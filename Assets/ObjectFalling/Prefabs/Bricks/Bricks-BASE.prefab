@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 4077444546876298158}
   - component: {fileID: 2865321498489998851}
   - component: {fileID: 2049274054892087880}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bricks-BASE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Height: 0
+  m_RayDistance: 1.1
   m_GroundLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -210,9 +211,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7808474700783398283}
     m_Modifications:
+    - target: {fileID: 117000, guid: bfb3c07c76c2ded45934d9c1b3145128, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 119590, guid: bfb3c07c76c2ded45934d9c1b3145128, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 120374, guid: bfb3c07c76c2ded45934d9c1b3145128, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 166708, guid: bfb3c07c76c2ded45934d9c1b3145128, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 168108, guid: bfb3c07c76c2ded45934d9c1b3145128, type: 3}
       propertyPath: m_Name
       value: ExplosionFireballPink
+      objectReference: {fileID: 0}
+    - target: {fileID: 168108, guid: bfb3c07c76c2ded45934d9c1b3145128, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 497798, guid: bfb3c07c76c2ded45934d9c1b3145128, type: 3}
       propertyPath: m_RootOrder

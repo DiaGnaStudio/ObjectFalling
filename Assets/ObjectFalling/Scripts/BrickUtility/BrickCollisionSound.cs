@@ -23,7 +23,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
             m_Brick.OnCollided -= Play;
         }
 
-        private void Play(IBrick[] brick)
+        private void Play(IBrick brick)
         {
             InternalPlay();
         }
