@@ -25,7 +25,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private void OnEnable()
         {
-            GlobalEvent.OnStartGame += StartCreating;
             GlobalEvent.OnFinishGame += StopCreating;
             Ground.Instance.OnRotated += CheckCrating;
         }
@@ -33,7 +32,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private void OnDisable()
         {
-            GlobalEvent.OnStartGame -= StartCreating;
             GlobalEvent.OnFinishGame -= StopCreating;
             if (Ground.IsAlive)
             {
@@ -41,7 +39,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
             }
         }
 
-        private void StartCreating()
+        private void Start()
         {
             m_CanCreate = true;
             Creating();

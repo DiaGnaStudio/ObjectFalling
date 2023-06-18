@@ -14,6 +14,7 @@ namespace DiaGna.ObjectFalling.Gameplay
 
         public static void StartGame()
         {
+            IsWin = false;
             OnStartGame?.Invoke();
         }
 

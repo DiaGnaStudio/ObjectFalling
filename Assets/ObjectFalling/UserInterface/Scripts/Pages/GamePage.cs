@@ -26,6 +26,11 @@ namespace DiaGna.ObjectFalling.UserInterface
             HeightController.Instance.OnChangeHeight += ChangeHeight;
             LevelLoader.Instance.OnLoadLevel += SetMaxHieght;
 
+            if (LevelLoader.Instance.IsLevelActive)
+            {
+                SetMaxHieght(LevelLoader.Instance.ActiveLevel);
+            }
+
             GlobalEvent.OnFinishGame += OpenPage;
         }
 

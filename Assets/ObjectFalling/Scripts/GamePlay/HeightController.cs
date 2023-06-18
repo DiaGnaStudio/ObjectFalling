@@ -12,7 +12,7 @@ namespace DiaGna.ObjectFalling.Gameplay
     public class HeightController : ComponentSingleton<HeightController>
     {
         private float m_CurrentHight;
-        public float m_WinHight;
+        private float m_WinHight;
 
         private List<IBrick> m_CatchedBricks = new List<IBrick>();
 
@@ -24,6 +24,11 @@ namespace DiaGna.ObjectFalling.Gameplay
         {
             Crane.Instance.Component.Hook.OnDrop += OnDropBrick;
             LevelLoader.Instance.OnLoadLevel += SetHeight;
+
+            if (LevelLoader.Instance.IsLevelActive)
+            {
+                SetHeight(LevelLoader.Instance.ActiveLevel);
+            }
         }
 
         private void OnDisable()
@@ -94,7 +99,7 @@ namespace DiaGna.ObjectFalling.Gameplay
                     Debug.Log(m_CurrentHight);
                     OnChangeHeight?.Invoke(m_CurrentHight);
 
-                    if (IsWin)
+                    if (m_WinHight <= m_CurrentHight)
                     {
                         GlobalEvent.FinishGame(true);
                     }
