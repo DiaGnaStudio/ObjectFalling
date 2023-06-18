@@ -60,6 +60,15 @@ namespace DiaGna.ObjectFalling.GroundUtility
             if (!m_CanRotated) return;
             m_CanRotated = false;
 
+            var bricks = FindObjectsOfType<Brick>();
+            foreach (var brick in bricks)
+            {
+                if(brick.transform.parent != transform)
+                {
+                    brick.transform.SetParent(transform);
+                }
+            }
+
             StartCoroutine(RotateCube());
         }
 

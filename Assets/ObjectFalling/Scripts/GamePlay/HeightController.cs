@@ -1,5 +1,6 @@
 using DiaGna.Framework.Singletons;
 using DiaGna.ObjectFalling.BrickUtility;
+using DiaGna.ObjectFalling.GroundUtility;
 using DiaGna.ObjectFalling.LevelUtility;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,8 @@ namespace DiaGna.ObjectFalling.Gameplay
             }
 
             BrickCountAnnouncer.OnCollidedBrick += AddBrick;
+
+            Ground.Instance.OnFinishRotating += InvokeEvent;
         }
 
         private void OnDisable()
@@ -39,6 +42,16 @@ namespace DiaGna.ObjectFalling.Gameplay
             }
 
             BrickCountAnnouncer.OnCollidedBrick -= AddBrick;
+
+            if (Ground.IsAlive)
+            {
+                Ground.Instance.OnFinishRotating += InvokeEvent;
+            }
+        }
+
+        private void InvokeEvent()
+        {
+            OnChangeHeight?.Invoke(m_CurrentDistance);
         }
 
         private void SetHeight(LevelData data)
@@ -70,7 +83,6 @@ namespace DiaGna.ObjectFalling.Gameplay
             if (m_CurrentDistance != maxDistance)
             {
                 m_CurrentDistance = maxDistance;
-                OnChangeHeight?.Invoke(m_CurrentDistance);
 
                 if (m_WinDistance <= m_CurrentDistance)
                 {

@@ -1,3 +1,4 @@
+using DiaGna.UserInterface;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,29 +11,29 @@ namespace DiaGna.ObjectFalling.UserInterface
     /// An <see cref="UIElement"/> that is a button to open a scene.
     /// </summary>
     [RequireComponent(typeof(Button))]
-    public class SceneOpener : MonoBehaviour
+    public class SceneOpener : UIElement
     {
         [SerializeField] private string m_SceneName;
         private Button m_Button;
 
-        private void Awake()
+        public override void OnLoadElement()
         {
             m_Button = GetComponent<Button>();
         }
 
-        private void OnEnable()
+        public override void OnEnableElement()
         {
             m_Button.onClick.AddListener(OpenScene);
         }
 
-        private void OnDisable()
+        public override void OnDisableElement()
         {
             m_Button.onClick.RemoveListener(OpenScene);
         }
-
         private void OpenScene()
         {
             SceneManager.LoadScene(m_SceneName);
         }
+
     }
 }

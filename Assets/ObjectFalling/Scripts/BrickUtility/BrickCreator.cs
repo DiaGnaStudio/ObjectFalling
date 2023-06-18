@@ -42,7 +42,7 @@ namespace DiaGna.ObjectFalling.BrickUtility
         private void Start()
         {
             m_CanCreate = true;
-            Creating();
+            m_CreatingCoroutine = StartCoroutine(WaitToCreate());
         }
 
         private void StopCreating(bool isWin)

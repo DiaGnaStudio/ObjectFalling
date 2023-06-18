@@ -10,10 +10,17 @@ namespace DiaGna.ObjectFalling.GroundUtility
     /// </summary>
     public class MoveByHeight : MonoBehaviour
     {
+        [SerializeField] private float m_MaxDistance;
+        [SerializeField] private float m_MinDistance;
         [SerializeField] private float m_ViewHeight;
         [SerializeField] private float m_Duration;
         private float m_lastHeight;
         private bool m_hasLastMove;
+
+        private void Start()
+        {
+            m_lastHeight = m_ViewHeight;
+        }
 
         private void OnEnable()
         {
@@ -32,17 +39,22 @@ namespace DiaGna.ObjectFalling.GroundUtility
         {
             if (currentHight > m_ViewHeight)
             {
-                MoveDown(currentHight - m_ViewHeight);
-            }
-            else if(m_hasLastMove && currentHight < m_lastHeight)
-            {
-                MoveDown(-(m_lastHeight - currentHight));
+                var diff = (currentHight - m_ViewHeight);
+                Move(diff);
             }
 
-            m_lastHeight = currentHight;
+            //if (currentHight > m_ViewHeight)
+            //{
+            //    Move(currentHight - m_lastHeight);
+            //    m_lastHeight = currentHight;
+            //}
+            //else if(m_hasLastMove && currentHight < m_lastHeight)
+            //{
+            //    Move(-(m_lastHeight - currentHight));
+            //}
         }
 
-        private void MoveDown(float newHeight)
+        private void Move(float newHeight)
         {
             transform.DOMoveY(transform.position.y + newHeight, m_Duration);
             m_hasLastMove = true;

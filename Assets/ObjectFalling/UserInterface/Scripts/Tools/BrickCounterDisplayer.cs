@@ -5,7 +5,6 @@ using DiaGna.UserInterface;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static Codice.CM.Common.CmCallContext;
 
 namespace DiaGna.ObjectFalling.UserInterface.Tools
 {

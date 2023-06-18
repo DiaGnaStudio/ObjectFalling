@@ -65,15 +65,15 @@ namespace DiaGna.ObjectFalling.BrickUtility
             return Mathf.Ceil(m_DistanceToGround + m_Height);
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            CollisionChecking();
-        }
+        //private void OnCollisionEnter(Collision collision)
+        //{
+        //    CollisionChecking();
+        //}
 
-        private void OnCollisionStay(Collision collision)
-        {
-            CollisionChecking();
-        }
+        //private void OnCollisionStay(Collision collision)
+        //{
+        //    CollisionChecking();
+        //}
 
         private void CollisionChecking()
         {
@@ -100,8 +100,6 @@ namespace DiaGna.ObjectFalling.BrickUtility
 
         private void Update()
         {
-            if (!m_OnGrounded) return;
-
             if (m_rigidbody.velocity.magnitude < 0.1f)
             {
                 IsStable = true;
@@ -110,6 +108,8 @@ namespace DiaGna.ObjectFalling.BrickUtility
             {
                 IsStable = false;
             }
+
+            CollisionChecking();
         }
     }
 }

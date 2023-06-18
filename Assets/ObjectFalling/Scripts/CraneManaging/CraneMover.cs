@@ -10,7 +10,6 @@ namespace DiaGna.ObjectFalling.CraneManaging
         [SerializeField] private Limit m_HorizontalLimit;
         [SerializeField] private Limit m_VerticalLimit;
 
-        private float m_PremitiveHight;
 
         public Vector3 finalPosition;
 
@@ -28,7 +27,6 @@ namespace DiaGna.ObjectFalling.CraneManaging
 
         private void Start()
         {
-            m_PremitiveHight = transform.position.y;
             finalPosition = transform.position;
         }
 
@@ -55,9 +53,9 @@ namespace DiaGna.ObjectFalling.CraneManaging
             //transform.position = new Vector3(m_HorizontalLimit.GetValue(currentPostion.x + horizontal), m_PremitiveHight, m_VerticalLimit.GetValue(currentPostion.z + vertical));
 
             var currentPos = finalPosition;
-            finalPosition = new Vector3(m_HorizontalLimit.GetValue(currentPos.x + horizontal), m_PremitiveHight, m_VerticalLimit.GetValue(currentPos.z + vertical));
+            finalPosition = new Vector3(m_HorizontalLimit.GetValue(currentPos.x + horizontal), transform.position.y, m_VerticalLimit.GetValue(currentPos.z + vertical));
 
-            if (Mathf.Abs(finalPosition.x - transform.position.x) >= 1)
+            if (Mathf.Abs(Vector3.Distance(finalPosition, transform.position)) >= 1)
             {
                 transform.position = Vector3Int.FloorToInt(finalPosition);
             }
