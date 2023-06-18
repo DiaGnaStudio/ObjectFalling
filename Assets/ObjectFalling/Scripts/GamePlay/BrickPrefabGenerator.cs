@@ -5,7 +5,6 @@ using DiaGna.ObjectFalling.BrickUtility;
 
 #if UNITY_EDITOR
 using UnityEditor;
-#endif
 
 namespace DiaGna.ObjectFalling
 {
@@ -101,3 +100,5 @@ namespace DiaGna.ObjectFalling
         }
     }
 }
+
+#endif
