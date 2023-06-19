@@ -30792,7 +30792,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: 
-  elements: []
+  elements:
+  - {fileID: 0}
+  - {fileID: 0}
   m_NextButton: {fileID: 8674718136240607196}
   m_ScoreSlider: {fileID: 5817121999967268169}
   Wirter: {fileID: 8543276677488568886}

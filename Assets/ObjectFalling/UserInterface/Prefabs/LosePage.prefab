@@ -10173,7 +10173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: 
-  elements: []
+  elements:
+  - {fileID: 0}
+  - {fileID: 0}
   m_RetryButton: {fileID: 767934758684019067}
 --- !u!1 &8466142065914972563
 GameObject:
