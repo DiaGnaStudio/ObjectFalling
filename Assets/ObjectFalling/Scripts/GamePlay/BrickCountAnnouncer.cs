@@ -7,7 +7,7 @@ namespace DiaGna.ObjectFalling.Gameplay
     public static class BrickCountAnnouncer
     {
         public static int TotalCount { get; private set; }
-        public static int CreatedCount => CountedBricks.Count;
+        public static int CreatedCount => DroppedBricks.Count;
 
         /// <summary>
         /// Parameters: brick throwed count, total count
